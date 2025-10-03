@@ -1,24 +1,24 @@
 import React from 'react';
 import './Projects.css';
 
-const Projects: React.FC = () => {
-  const projects = [
-    {
-      title: 'DanHecker.com - Resume as Code',
-      description: 'Personal resume site built with React, TypeScript, and deployed via GitHub Pages with automated CI/CD pipeline. Showcases modern web development practices and DevOps integration.',
-      technologies: ['React', 'TypeScript', 'GitHub Actions', 'GitHub Pages', 'Vite', 'CSS3'],
-      link: 'https://github.com/heckerdj/resume-as-code',
-      status: 'Live'
-    },
-    {
-      title: 'Mobile Behaviometric Framework Research',
-      description: 'IEEE published research on mobile user behavior analysis. Developed Android application to track data usage patterns for sociability assessment and smartphone user identification.',
-      technologies: ['Android Development', 'Java', 'Mobile UI/UX', 'Data Analytics', 'Research'],
-      link: 'https://ieeexplore.ieee.org',
-      status: 'Published 2016'
-    }
-  ];
+const projects = [
+  {
+    title: 'DanHecker.com - Resume as Code',
+    description: 'Personal resume site built with React, TypeScript, and deployed via GitHub Pages with automated CI/CD pipeline. Showcases modern web development practices and DevOps integration.',
+    technologies: ['React', 'TypeScript', 'GitHub Actions', 'GitHub Pages', 'Vite', 'CSS3'],
+    link: 'https://github.com/heckerdj/resume-as-code',
+    status: 'Live'
+  },
+  {
+    title: 'Mobile Behaviometric Framework Research',
+    description: 'IEEE published research on mobile user behavior analysis. Developed Android application to track data usage patterns for sociability assessment and smartphone user identification.',
+    technologies: ['Android Development', 'Java', 'Mobile UI/UX', 'Data Analytics', 'Research'],
+    link: 'https://ieeexplore.ieee.org',
+    status: 'Published 2016'
+  }
+];
 
+const Projects: React.FC = () => {
   return (
     <section className="projects-section">
       <div className="container">
