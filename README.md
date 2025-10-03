@@ -11,6 +11,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - **Frontend:** React 19 with TypeScript
 - **Build Tool:** Vite
 - **Styling:** Component-based CSS3 with design token system
+- **Testing:** Vitest + React Testing Library
 - **Deployment:** GitHub Pages
 - **CI/CD:** GitHub Actions
 - **Code Quality:** ESLint, TypeScript strict mode
@@ -23,6 +24,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - ✅ Automated deployment pipeline
 - ✅ Component-based architecture with CSS design tokens
 - ✅ Consistent styling through CSS variables
+- ✅ Unit testing with Vitest and React Testing Library
 - 🔄 Under construction: Dark mode toggle
 - 🔄 Under construction: PDF download functionality
 - 🔄 Under construction: Architecture diagram visualization
@@ -50,6 +52,18 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Run tests
+npm run test
+
+# Run tests once (CI mode)
+npm run test:run
+
+# Run tests with UI
+npm run test:ui
+
+# Run tests with coverage
+npm run test:coverage
 ```
 
 ### Project Structure
@@ -66,6 +80,12 @@ src/
 │   ├── Skills.css       # Skills styles
 │   └── Projects.tsx     # Project showcase
 │   └── Projects.css     # Project styles
+├── test/                 # Test files
+│   ├── setup.ts         # Test configuration
+│   ├── App.test.tsx     # App component tests
+│   ├── Header.test.tsx  # Header component tests
+│   ├── Skills.test.tsx  # Skills component tests
+│   └── Projects.test.tsx # Projects component tests
 ├── App.tsx              # Main application component
 ├── App.css              # Global styles & CSS design tokens
 └── main.tsx            # Application entry point
@@ -85,13 +105,23 @@ This project follows **component-based CSS** with shared design tokens:
 
 📖 See [docs/CSS_ARCHITECTURE.md](docs/CSS_ARCHITECTURE.md) for detailed guidelines.
 
+### Testing
+
+This project uses **Vitest** with **React Testing Library** for unit testing:
+- Component rendering and behavior tests
+- User interaction testing
+- 100% code coverage for all components
+- Fast execution with Vite's native integration
+
+Test files are located in `src/test/` and follow the naming convention `*.test.tsx`.
+
 ## 🔄 DevOps Pipeline
 
 The site implements a complete DevOps pipeline:
 
 1. **Code:** React + TypeScript with ESLint
 2. **Build:** Vite build process
-3. **Test:** Type checking with TypeScript
+3. **Test:** Vitest unit tests + TypeScript type checking
 4. **Deploy:** Automated GitHub Actions workflow
 5. **Monitor:** GitHub Pages deployment status
 
@@ -103,7 +133,7 @@ The site implements a complete DevOps pipeline:
 
 ## 📋 Planned Enhancements
 
-- [ ] Unit testing with Jest/Vitest
+- [x] Unit testing with Jest/Vitest
 - [ ] SonarCloud integration for code quality
 - [ ] GitHub CodeQL for security analysis
 - [ ] Performance monitoring
