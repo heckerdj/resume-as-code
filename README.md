@@ -31,7 +31,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ### Prerequisites
 - Node.js 20+
-- npm
+- pnpm
 
 ### Local Development
 ```bash
@@ -40,16 +40,16 @@ git clone https://github.com/heckerdj/resume-as-code.git
 cd resume-as-code
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
 
 # Build for production
-npm run build
+pnpm run build
 
 # Preview production build
-npm run preview
+pnpm run preview
 ```
 
 ### Project Structure
