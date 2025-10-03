@@ -20,7 +20,7 @@ function App() {
         </main>
         <footer className="footer">
           <div className="container">
-            <p>&copy; 2025 Dan Hecker. Built with React + TypeScript.</p>
+            <p>&copy; {new Date().getFullYear()} Dan Hecker. Built with React + TypeScript.</p>
             <div className="status-badges">
               <img 
                 src="https://github.com/heckerdj/resume-as-code/actions/workflows/deploy.yml/badge.svg" 
