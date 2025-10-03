@@ -26,12 +26,12 @@ const Skills: React.FC = () => {
       <div className="container">
         <h2>Skills</h2>
         <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
+          {skillCategories.map((category) => (
+            <div key={category.category} className="skill-category">
               <h3>{category.category}</h3>
               <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skill-tag">
+                {category.skills.map((skill) => (
+                  <span key={skill} className="skill-tag">
                     {skill}
                   </span>
                 ))}

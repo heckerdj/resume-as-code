@@ -24,13 +24,13 @@ const Projects: React.FC = () => {
       <div className="container">
         <h2>Projects</h2>
         <div className="projects-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card">
+          {projects.map((project) => (
+            <div key={project.title} className="project-card">
               <h3>{project.title}</h3>
               <p className="project-description">{project.description}</p>
               <div className="project-technologies">
-                {project.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className="tech-tag">
+                {project.technologies.map((tech) => (
+                  <span key={tech} className="tech-tag">
                     {tech}
                   </span>
                 ))}

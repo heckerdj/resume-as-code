@@ -68,7 +68,7 @@ const Experience: React.FC = () => {
             <p className="program">IT Technical Training Program - Class of 2020</p>
             <ul>
               <li><strong>DevSecOps:</strong> Automated onboarding processes for enterprise DevOps pipelines, created self-serve documentation reducing monthly ticket intake</li>
-              <li><strong>WebEng:</strong> Migrated web applications from 2008 to 2016 shared web servers, sun-setted obsolete applications</li>
+              <li><strong>WebEng:</strong> Migrated web applications from 2008 to 2016 shared web servers, retired obsolete applications</li>
               <li><strong>Cloud COE:</strong> Containerized enterprise applications for cloud deployment</li>
               <li><strong>Cloud Engineering:</strong> Designed Azure private endpoints, tagging and naming conventions for enterprise cloud infrastructure</li>
             </ul>
