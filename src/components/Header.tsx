@@ -20,6 +20,9 @@ const Header: React.FC = () => {
             <a href="mailto:dan@danhecker.com">
               Contact
             </a>
+            <a href="/Dan_Hecker_Resume.pdf" download className="download-btn">
+              Download PDF
+            </a>
           </div>
         </div>
       </div>

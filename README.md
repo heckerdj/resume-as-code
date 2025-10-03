@@ -23,8 +23,8 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - ✅ Automated deployment pipeline
 - ✅ Component-based architecture with CSS design tokens
 - ✅ Consistent styling through CSS variables
+- ✅ PDF download functionality
 - 🔄 Under construction: Dark mode toggle
-- 🔄 Under construction: PDF download functionality
 - 🔄 Under construction: Architecture diagram visualization
 
 ## 🏗️ Development
