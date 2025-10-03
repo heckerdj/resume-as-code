@@ -10,7 +10,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 - **Frontend:** React 19 with TypeScript
 - **Build Tool:** Vite
-- **Styling:** CSS3 with modern responsive design
+- **Styling:** Component-based CSS3 with design token system
 - **Deployment:** GitHub Pages
 - **CI/CD:** GitHub Actions
 - **Code Quality:** ESLint, TypeScript strict mode
@@ -21,7 +21,8 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - ✅ Responsive design for all device sizes
 - ✅ Custom domain with HTTPS (DanHecker.com)
 - ✅ Automated deployment pipeline
-- ✅ Component-based architecture
+- ✅ Component-based architecture with CSS design tokens
+- ✅ Consistent styling through CSS variables
 - 🔄 Under construction: Dark mode toggle
 - 🔄 Under construction: PDF download functionality
 - 🔄 Under construction: Architecture diagram visualization
@@ -54,15 +55,35 @@ npm run preview
 ### Project Structure
 ```
 src/
-├── components/           # React components
+├── components/           # React components (each with own CSS)
 │   ├── Header.tsx       # Site header with contact info
+│   ├── Header.css       # Header styles
 │   ├── About.tsx        # About section with construction notice
+│   ├── About.css        # About section styles
 │   ├── Experience.tsx   # Work experience
+│   ├── Experience.css   # Experience styles
 │   ├── Skills.tsx       # Technical skills grid
+│   ├── Skills.css       # Skills styles
 │   └── Projects.tsx     # Project showcase
+│   └── Projects.css     # Project styles
 ├── App.tsx              # Main application component
+├── App.css              # Global styles & CSS design tokens
 └── main.tsx            # Application entry point
+
+docs/
+├── CSS_ARCHITECTURE.md   # CSS architecture guidelines
+└── CSS_DECISION_SUMMARY.md # Why component-based CSS
 ```
+
+### CSS Architecture
+
+This project follows **component-based CSS** with shared design tokens:
+- Each component has its own CSS file (colocation)
+- CSS variables in `App.css` ensure consistency
+- Design tokens for colors, spacing, shadows, etc.
+- Best practice for React + Vite projects
+
+📖 See [docs/CSS_ARCHITECTURE.md](docs/CSS_ARCHITECTURE.md) for detailed guidelines.
 
 ## 🔄 DevOps Pipeline
 

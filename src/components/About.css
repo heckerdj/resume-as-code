@@ -1,8 +1,8 @@
 .about-section {
-  background: white;
-  border-radius: 10px;
-  margin: 2rem auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: var(--color-bg-section);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-lg) auto;
+  box-shadow: var(--shadow-md);
 }
 
 .about-content {
@@ -12,27 +12,27 @@
 .about-content p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--color-text-secondary);
   max-width: 800px;
-  margin: 0 auto 2rem;
+  margin: 0 auto var(--spacing-lg);
 }
 
 .construction-notice {
   background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-  padding: 2rem;
-  border-radius: 10px;
-  margin-top: 2rem;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
   border-left: 5px solid #e17055;
 }
 
 .construction-notice h3 {
-  color: #2d3436;
-  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
   font-size: 1.5rem;
 }
 
 .construction-notice p {
-  color: #2d3436;
+  color: var(--color-text-primary);
   font-size: 1.1rem;
   margin: 0;
 }
@@ -43,7 +43,7 @@
   }
   
   .construction-notice {
-    padding: 1.5rem;
+    padding: var(--spacing-md);
   }
   
   .construction-notice h3 {

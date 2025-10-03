@@ -1,8 +1,8 @@
 .education-section {
-  background: white;
-  border-radius: 10px;
-  margin: 2rem auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: var(--color-bg-section);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-lg) auto;
+  box-shadow: var(--shadow-md);
 }
 
 .education-content {
@@ -11,110 +11,110 @@
 }
 
 .education-item {
-  padding: 2rem;
+  padding: var(--spacing-lg);
   border-bottom: 2px solid #ecf0f1;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .education-item h3 {
-  color: #2c3e50;
+  color: var(--color-text-primary);
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 .education-item .institution {
-  color: #3498db;
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 .education-item .location {
-  color: #7f8c8d;
+  color: var(--color-text-muted);
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .education-skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
 }
 
 .certifications, .publications {
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .certifications h3, .publications h3 {
-  color: #2c3e50;
+  color: var(--color-text-primary);
   font-size: 1.4rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: var(--spacing-xs);
 }
 
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
 
 .cert-item {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #e74c3c;
+  background: var(--color-bg-card);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--color-accent);
 }
 
 .cert-item h4 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
   font-size: 1.1rem;
 }
 
 .cert-issuer {
-  color: #e74c3c;
+  color: var(--color-accent);
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
 
 .cert-date {
-  color: #7f8c8d;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
 }
 
 .cert-id {
-  color: #95a5a6;
+  color: var(--color-text-light);
   font-size: 0.8rem;
   font-family: monospace;
 }
 
 .publication-item {
   background: linear-gradient(135deg, #fff5f5 0%, #f8f9fa 100%);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #9b59b6;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--color-info);
 }
 
 .publication-item h4 {
-  color: #2c3e50;
+  color: var(--color-text-primary);
   margin-bottom: 0.8rem;
   line-height: 1.4;
 }
 
 .publication-venue {
-  color: #9b59b6;
+  color: var(--color-info);
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
 
 .publication-date {
-  color: #7f8c8d;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .publication-item ul {
@@ -124,9 +124,9 @@
 
 .publication-item li {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #555;
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-secondary);
   line-height: 1.5;
 }
 
@@ -139,7 +139,7 @@
 
 @media (max-width: 768px) {
   .education-item, .certifications, .publications {
-    padding: 1.5rem;
+    padding: var(--spacing-md);
   }
   
   .cert-grid {
