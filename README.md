@@ -135,7 +135,6 @@ The site implements a complete DevOps pipeline with comprehensive testing and se
 - Deploys to GitHub Pages automatically
 - Custom domain configuration maintained
 
-<<<<<<< HEAD
 #### PR Preview (`pr-preview.yml`)
 - Triggers on pull request events
 - Runs full test suite before build
