@@ -21,6 +21,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - ✅ Responsive design for all device sizes
 - ✅ Custom domain with HTTPS (DanHecker.com)
 - ✅ Automated deployment pipeline
+- ✅ PR preview builds for manual review before merge
 - ✅ Component-based architecture with CSS design tokens
 - ✅ Consistent styling through CSS variables
 - 🔄 Under construction: Dark mode toggle
@@ -31,7 +32,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ### Prerequisites
 - Node.js 20+
-- npm
+- pnpm
 
 ### Local Development
 ```bash
@@ -40,16 +41,16 @@ git clone https://github.com/heckerdj/resume-as-code.git
 cd resume-as-code
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
 
 # Build for production
-npm run build
+pnpm run build
 
 # Preview production build
-npm run preview
+pnpm run preview
 ```
 
 ### Project Structure
@@ -100,6 +101,13 @@ The site implements a complete DevOps pipeline:
 - Installs dependencies and builds React app
 - Deploys to GitHub Pages automatically
 - Custom domain configuration maintained
+
+### PR Preview Workflow
+- Triggers automatically when a PR is opened, synchronized, or reopened
+- Builds the React app and validates the changes
+- Uploads the built site as a downloadable artifact
+- Posts a comment on the PR with instructions to download and review the preview
+- Allows manual review of the site before merging to production
 
 ## 📋 Planned Enhancements
 
