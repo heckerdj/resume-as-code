@@ -14,10 +14,10 @@ const Header: React.FC = () => {
             <a href="https://github.com/heckerdj" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/dan-hecker" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/danhecker/" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="mailto:dan@danhecker.com">
+            <a href="mailto:danjhecker@gmail.com">
               Contact
             </a>
             <a href="/Dan_Hecker_Resume.pdf" download className="download-btn">
