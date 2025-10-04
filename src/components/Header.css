@@ -73,6 +73,17 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.contact-links .download-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.contact-links .download-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
