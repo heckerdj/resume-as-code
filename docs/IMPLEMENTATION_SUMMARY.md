@@ -72,26 +72,25 @@ npm run test:coverage # Run tests with coverage report
 
 **Detailed Instructions:** See `docs/SONARCLOUD_SETUP.md` for step-by-step guide.
 
-### 4. Ephemeral PR Preview Deployments
+### 4. Ephemeral PR Preview Builds
 
 **Status:** ✅ Fully Implemented - No Additional Setup Required
 
 - **Preview Workflow:** `.github/workflows/pr-preview.yml`
-- **Cleanup Workflow:** `.github/workflows/pr-preview-cleanup.yml`
 
 **Features:**
-- Automatic preview deployment for each PR
-- Unique URL per PR: `https://danhecker.com/pr-{number}/`
-- Automated comment on PR with preview link
-- Tests run before deployment
-- Automatic cleanup when PR is closed
-- Updated comment if PR is synchronized
+- Automatic preview build for each PR
+- Tests run before building
+- Built site uploaded as artifact (30-day retention)
+- Automated comment on PR with download instructions
+- Manual review capability before merge
+- No cleanup needed (artifacts expire automatically)
 
 **How It Works:**
-1. PR is opened or updated → Preview deployed
-2. Bot comments on PR with preview URL
-3. Review changes on live preview site
-4. PR is closed → Preview automatically removed
+1. PR is opened or updated → Tests run, then build
+2. Bot comments on PR with artifact download link
+3. Download artifact to review changes locally
+4. Artifacts automatically expire after 30 days
 
 ### 5. Documentation Updates
 
@@ -126,15 +125,11 @@ New documentation:
    - Triggers: Push to `main`, PRs
    - Requires: SONAR_TOKEN secret
    
-4. **pr-preview.yml** (New)
-   - Preview deployment for PRs
+4. **pr-preview.yml** (New/Updated)
+   - Preview build with tests for PRs
    - Triggers: PR opened, synchronized, reopened
    - No setup required
-   
-5. **pr-preview-cleanup.yml** (New)
-   - Cleanup preview deployments
-   - Triggers: PR closed
-   - No setup required
+   - Uploads build artifacts for manual review
 
 ## 🔧 Configuration Changes
 
@@ -167,10 +162,9 @@ New documentation:
 4. **src/test/*.test.tsx** - 5 test files with 24 tests
 5. **.github/workflows/codeql.yml** - CodeQL workflow
 6. **.github/workflows/sonarcloud.yml** - SonarQube workflow
-7. **.github/workflows/pr-preview.yml** - PR preview workflow
-8. **.github/workflows/pr-preview-cleanup.yml** - Cleanup workflow
-9. **sonar-project.properties** - SonarQube configuration
-10. **docs/SONARCLOUD_SETUP.md** - SonarQube setup guide
+7. **.github/workflows/pr-preview.yml** - PR preview workflow (updated)
+8. **sonar-project.properties** - SonarQube configuration
+9. **docs/SONARCLOUD_SETUP.md** - SonarQube setup guide
 
 ## 🚀 Next Steps
 
@@ -244,17 +238,17 @@ After merging to main:
 ### 6. PR Preview
 When creating a new PR:
 - PR preview workflow should trigger ✅
-- Preview should deploy to unique URL ✅
-- Bot should comment with preview link ✅
-- Preview should be removed when PR closes ✅
+- Tests should run successfully ✅
+- Build artifact should be uploaded ✅
+- Bot should comment with download instructions ✅
+- Artifact expires after 30 days ✅
 
 ## 🎯 Summary
 
 **Fully Working (No Action Required):**
 - ✅ Unit testing with Vitest (24 tests)
 - ✅ GitHub CodeQL security scanning
-- ✅ PR preview deployments
-- ✅ PR preview cleanup
+- ✅ PR preview builds with artifact downloads
 - ✅ Updated documentation
 
 **Requires One-Time Setup:**

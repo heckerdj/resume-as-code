@@ -26,6 +26,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 - ✅ Responsive design for all device sizes
 - ✅ Custom domain with HTTPS (DanHecker.com)
 - ✅ Automated deployment pipeline
+- ✅ PR preview builds for manual review before merge
 - ✅ Component-based architecture with CSS design tokens
 - ✅ Consistent styling through CSS variables
 - ✅ Comprehensive unit test coverage (24+ tests)
@@ -40,7 +41,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ### Prerequisites
 - Node.js 20+
-- npm
+- pnpm
 
 ### Local Development
 ```bash
@@ -49,10 +50,10 @@ git clone https://github.com/heckerdj/resume-as-code.git
 cd resume-as-code
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
 
 # Run tests
 npm test
@@ -64,10 +65,10 @@ npm run test:ui
 npm run test:coverage
 
 # Build for production
-npm run build
+pnpm run build
 
 # Preview production build
-npm run preview
+pnpm run preview
 
 # Lint code
 npm run lint
@@ -134,17 +135,14 @@ The site implements a complete DevOps pipeline with comprehensive testing and se
 - Deploys to GitHub Pages automatically
 - Custom domain configuration maintained
 
+<<<<<<< HEAD
 #### PR Preview (`pr-preview.yml`)
 - Triggers on pull request events
-- Runs full test suite
-- Builds and deploys to unique preview URL
-- Comments on PR with preview link
-- Format: `https://danhecker.com/pr-{number}/`
-
-#### Preview Cleanup (`pr-preview-cleanup.yml`)
-- Triggers when PR is closed or merged
-- Removes preview deployment
-- Cleans up GitHub Pages branch
+- Runs full test suite before build
+- Builds React app and validates changes
+- Uploads built site as downloadable artifact
+- Posts comment on PR with download instructions
+- Allows manual review before merging to production
 
 #### Code Quality (`sonarcloud.yml`)
 - Runs on push to `main` and all PRs
