@@ -139,9 +139,10 @@ The site implements a complete DevOps pipeline with comprehensive testing and se
 - Triggers on pull request events
 - Runs full test suite before build
 - Builds React app and validates changes
-- Uploads built site as downloadable artifact
-- Posts comment on PR with download instructions
+- Deploys preview to GitHub Pages subdirectory
+- Posts comment on PR with clickable preview link
 - Allows manual review before merging to production
+- Preview URL: `https://heckerdj.github.io/resume-as-code/pr-preview/pr-{number}/`
 
 #### Code Quality (`sonarcloud.yml`)
 - Runs on push to `main` and all PRs
