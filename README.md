@@ -11,7 +11,7 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ## 🛠️ Technology Stack
 
-- **Frontend:** React 19 with TypeScript
+- **Frontend:** React 19 with TypeScript, React Router
 - **Build Tool:** Vite
 - **Styling:** Component-based CSS3 with design token system
 - **Testing:** Vitest with React Testing Library
@@ -135,7 +135,18 @@ The site implements a complete DevOps pipeline with comprehensive testing and se
 - Deploys to GitHub Pages automatically
 - Custom domain configuration maintained
 
-#### PR Preview (`pr-preview.yml`)
+#### PR Preview - Custom Domain (`preview.yml`)
+- Triggers on pull request events to `main` branch
+- Uses Node.js 18 and pnpm for dependency management
+- Runs full test suite before build
+- Builds React app with dynamic basename for subpath routing
+- Sets `REACT_APP_PR_PATH` environment variable (e.g., `previews/pr-42`)
+- Deploys preview to GitHub Pages subdirectory using `peaceiris/actions-gh-pages`
+- Posts comment on PR with clickable preview link
+- Allows manual review before merging to production
+- Preview URL: `https://danhecker.com/previews/pr-{number}/`
+
+#### PR Preview - GitHub Pages (`pr-preview.yml`)
 - Triggers on pull request events
 - Runs full test suite before build
 - Builds React app and validates changes
