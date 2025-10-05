@@ -10,11 +10,25 @@ describe('App', () => {
 
   it('renders all main sections', () => {
     render(<App />)
+    // Professional Experience tab content (default tab)
     expect(screen.getByText('About Me')).toBeInTheDocument()
     expect(screen.getByText('Experience')).toBeInTheDocument()
     expect(screen.getByText('Skills')).toBeInTheDocument()
     expect(screen.getByText('Education & Certifications')).toBeInTheDocument()
-    expect(screen.getByText('Projects')).toBeInTheDocument()
+    // Projects is in a different tab, so not visible by default
+    expect(screen.queryByText('Projects')).not.toBeVisible()
+  })
+
+  it('renders tab buttons', () => {
+    render(<App />)
+    expect(screen.getByRole('tab', { name: 'Professional Experience' })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: 'Personal Projects' })).toBeInTheDocument()
+  })
+
+  it('shows Professional Experience tab by default', () => {
+    render(<App />)
+    const professionalTab = screen.getByRole('tab', { name: 'Professional Experience' })
+    expect(professionalTab).toHaveAttribute('aria-selected', 'true')
   })
 
   it('renders the footer with copyright', () => {

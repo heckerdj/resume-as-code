@@ -4,19 +4,36 @@ import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Education from './components/Education'
 import Projects from './components/Projects'
+import Tabs from './components/Tabs'
 import './App.css'
 
 function App() {
+  const tabs = [
+    {
+      id: 'professional',
+      label: 'Professional Experience',
+      content: (
+        <>
+          <About />
+          <Experience />
+          <Skills />
+          <Education />
+        </>
+      )
+    },
+    {
+      id: 'projects',
+      label: 'Personal Projects',
+      content: <Projects />
+    }
+  ];
+
   return (
     <>
       <Header />
       <div className="app">
         <main className="main-content">
-          <About />
-          <Experience />
-          <Skills />
-          <Education />
-          <Projects />
+          <Tabs tabs={tabs} defaultTab="professional" />
         </main>
         <footer className="footer">
           <div className="container">
