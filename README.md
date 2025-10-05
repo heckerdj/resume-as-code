@@ -129,7 +129,7 @@ The site implements a complete DevOps pipeline with comprehensive testing and se
 
 ### CI/CD Workflows
 
-#### Main Deployment (`deploy.yml`)
+#### Main Deployment (`build-and-deploy.yml`)
 - Triggers on push to `main` branch
 - Runs tests and builds React app
 - Deploys to GitHub Pages automatically

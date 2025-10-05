@@ -27,6 +27,6 @@ describe('App', () => {
     render(<App />)
     const badge = screen.getByAltText('GitHub Pages Deploy Status')
     expect(badge).toBeInTheDocument()
-    expect(badge).toHaveAttribute('src', 'https://github.com/heckerdj/resume-as-code/actions/workflows/deploy.yml/badge.svg')
+    expect(badge).toHaveAttribute('src', 'https://github.com/heckerdj/resume-as-code/actions/workflows/build-and-deploy.yml/badge.svg')
   })
 })
