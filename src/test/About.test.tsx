@@ -14,14 +14,9 @@ describe('About', () => {
     expect(screen.getByText(/DevOps engineer by practice/)).toBeInTheDocument()
   })
 
-  it('renders the construction notice heading', () => {
+  it('renders the complete about section content', () => {
     render(<About />)
-    expect(screen.getByText('🚧 Under Construction')).toBeInTheDocument()
-  })
-
-  it('renders construction notice description', () => {
-    render(<About />)
-    expect(screen.getByText(/This site is currently being built/)).toBeInTheDocument()
-    expect(screen.getByText(/React and TypeScript/)).toBeInTheDocument()
+    expect(screen.getByText(/automation which has led me to my career/)).toBeInTheDocument()
+    expect(screen.getByText(/improving the process in both security and speed/)).toBeInTheDocument()
   })
 })
