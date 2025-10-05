@@ -40,7 +40,7 @@ function App() {
             <p>&copy; {new Date().getFullYear()} Dan Hecker. Built with React + TypeScript.</p>
             <div className="status-badges">
               <img 
-                src="https://github.com/heckerdj/resume-as-code/actions/workflows/deploy.yml/badge.svg" 
+                src="https://github.com/heckerdj/resume-as-code/actions/workflows/build-and-deploy.yml/badge.svg" 
                 alt="GitHub Pages Deploy Status" 
               />
             </div>
