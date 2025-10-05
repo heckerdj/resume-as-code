@@ -13,13 +13,6 @@ const About: React.FC = () => {
             to my career in automating code delivery. From source control best practices, through build, 
             test, scan, deploy, promotion and release I thrive on improving the process in both security and speed.
           </p>
-          <div className="construction-notice">
-            <h3>🚧 Under Construction</h3>
-            <p>
-              This site is currently being built with React and TypeScript. 
-              The full resume content and features are being implemented as part of the DevOps pipeline.
-            </p>
-          </div>
         </div>
       </div>
     </section>
