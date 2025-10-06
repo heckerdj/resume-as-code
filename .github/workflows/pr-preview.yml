@@ -1,11 +1,12 @@
-name: PR Preview Build
+name: PR Preview
 
 on:
   pull_request:
+    branches: [main]
     types: [opened, synchronize, reopened]
 
 jobs:
-  build-preview:
+  build-and-deploy-preview:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,7 +21,7 @@ jobs:
         with:
           version: 10
           
-      - name: Setup Node.js
+      - name: Setup Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -32,17 +33,17 @@ jobs:
       - name: Run tests
         run: pnpm test -- --run
         
-      - name: Build React app
+      - name: Build React app with PR preview path
         run: pnpm run build
         env:
-          BASE_PATH: /pr-preview/pr-${{ github.event.pull_request.number }}
+          REACT_APP_PR_PATH: previews/pr-${{ github.event.pull_request.number }}
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          destination_dir: pr-preview/pr-${{ github.event.pull_request.number }}
+          destination_dir: previews/pr-${{ github.event.pull_request.number }}
           keep_files: true
           
       - name: Comment PR with preview link
@@ -50,8 +51,7 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const repo = context.repo;
-            const previewUrl = `https://${repo.owner}.github.io/${repo.repo}/pr-preview/pr-${prNumber}/`;
+            const previewUrl = `https://danhecker.com/previews/pr-${prNumber}`;
             
             const commentBody = `## 🎨 Preview Build Ready!
             
@@ -70,8 +70,8 @@ jobs:
             
             // Find existing comment
             const { data: comments } = await github.rest.issues.listComments({
-              owner: repo.owner,
-              repo: repo.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               issue_number: prNumber,
             });
             
@@ -83,16 +83,16 @@ jobs:
             if (botComment) {
               // Update existing comment
               await github.rest.issues.updateComment({
-                owner: repo.owner,
-                repo: repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 comment_id: botComment.id,
                 body: commentBody
               });
             } else {
               // Create new comment
               await github.rest.issues.createComment({
-                owner: repo.owner,
-                repo: repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 issue_number: prNumber,
                 body: commentBody
               });
