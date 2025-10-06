@@ -148,8 +148,8 @@ section h2::after {
 
 /* Footer */
 .footer {
-  background-color: var(--color-text-primary);
-  color: white;
+  background-color: #374151; /* Fixed dark gray background - stays same in both themes */
+  color: white; /* Fixed white text - stays same in both themes */
   padding: var(--spacing-lg) 0;
   margin-top: auto;
 }
