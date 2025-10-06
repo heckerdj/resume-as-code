@@ -33,6 +33,20 @@
   margin-bottom: var(--spacing-xs);
 }
 
+.employer-logo {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.employer-name-fallback {
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
 .employer-duration {
   color: var(--color-text-primary);
   font-weight: 600;
@@ -140,6 +154,10 @@
   
   .employer-name {
     font-size: 1.2rem;
+  }
+  
+  .employer-logo {
+    max-width: 140px;
   }
   
   .role h4 {
