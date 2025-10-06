@@ -10,11 +10,11 @@ const projects = [
     status: 'Live'
   },
   {
-    title: 'Mobile Behaviometric Framework Research',
-    description: 'IEEE published research on mobile user behavior analysis. Developed Android application to track data usage patterns for sociability assessment and smartphone user identification.',
-    technologies: ['Android Development', 'Java', 'Mobile UI/UX', 'Data Analytics', 'Research'],
-    link: 'https://ieeexplore.ieee.org',
-    status: 'Published 2016'
+    title: 'Dawn-of-Discord - Text-based RPG',
+    description: 'Deployed discord bots in a personally managed server that ran a text-based RPG game and manipulated discord roles to move players between locations within the game.',
+    technologies: ['MongoDB', 'Python'],
+    link: 'https://github.com/heckerdj/Dawn-of-Discord',
+    status: 'Archived'
   }
 ];
 
