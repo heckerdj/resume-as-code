@@ -211,7 +211,7 @@ const Experience: React.FC = () => {
                     console.error('Failed to load Clarkson logo:', companyInfo.Clarkson.logo);
                     console.error('Error event:', e);
                   }}
-                  onLoad={() => console.log('Clarkson logo loaded successfully')}
+                  
                 />
               ) : (
                 <h3 className="employer-name-fallback">{companyInfo.Clarkson.name}</h3>
