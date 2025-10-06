@@ -22,7 +22,7 @@
   background-color: #E9E9EA;
   border-radius: 14px;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode-toggle-input:checked + .dark-mode-toggle-label .dark-mode-toggle-track {
@@ -38,7 +38,7 @@
   background-color: white;
   border-radius: 50%;
   transition: transform 0.3s ease;
-  box-shadow: 0 2px 4px black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,11 +56,11 @@
 
 /* Hover effects */
 .dark-mode-toggle-label:hover .dark-mode-toggle-track {
-  box-shadow: 0 4px 8px black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode-toggle-label:hover .dark-mode-toggle-thumb {
-  box-shadow: 0 3px 6px black;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Active state */
