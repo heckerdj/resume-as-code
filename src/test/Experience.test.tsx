@@ -33,7 +33,7 @@ describe('Experience', () => {
   it('renders Aetna roles', () => {
     render(<Experience />)
     expect(screen.getByText('System Engineer')).toBeInTheDocument()
-    expect(screen.getByText('Associate System Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Associate System Engineer - IT Technical Training Program')).toBeInTheDocument()
   })
 
   it('renders other professional experience', () => {
@@ -49,6 +49,6 @@ describe('Experience', () => {
     render(<Experience />)
     expect(screen.getByText(/Lead a globally distributed team of 10\+ engineers/)).toBeInTheDocument()
     expect(screen.getByText(/Designed and implemented CI\/CD pipelines/)).toBeInTheDocument()
-    expect(screen.getByText(/IT Technical Training Program - Class of 2020/)).toBeInTheDocument()
+    expect(screen.getByText(/Automated onboarding processes for enterprise DevOps pipelines/)).toBeInTheDocument()
   })
 })
