@@ -23,7 +23,7 @@
 .employer-header {
   background: var(--color-bg-card);
   padding: var(--spacing-md);
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 2px solid var(--color-border-light);
 }
 
 .employer-name {
@@ -52,7 +52,7 @@
 
 .role {
   padding: var(--spacing-md) 0;
-  border-bottom: 1px solid #f1f3f4;
+  border-bottom: 1px solid var(--color-border-muted);
   position: relative;
 }
 
