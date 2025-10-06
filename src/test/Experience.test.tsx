@@ -49,6 +49,5 @@ describe('Experience', () => {
     render(<Experience />)
     expect(screen.getByText(/Lead a globally distributed team of 10\+ engineers/)).toBeInTheDocument()
     expect(screen.getByText(/Designed and implemented CI\/CD pipelines/)).toBeInTheDocument()
-    expect(screen.getByText(/Automated onboarding processes for enterprise DevOps pipelines/)).toBeInTheDocument()
   })
 })

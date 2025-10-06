@@ -14,10 +14,10 @@ describe('Projects', () => {
     expect(screen.getByText(/Personal resume site built with React/)).toBeInTheDocument()
   })
 
-  it('renders Mobile Behaviometric Framework project', () => {
+  it('renders Dawn-of-Discord project', () => {
     render(<Projects />)
-    expect(screen.getByText('Mobile Behaviometric Framework Research')).toBeInTheDocument()
-    expect(screen.getByText(/IEEE published research/)).toBeInTheDocument()
+    expect(screen.getByText('Dawn-of-Discord - Text-based RPG')).toBeInTheDocument()
+    expect(screen.getByText(/Deployed discord bots in a personally managed server/)).toBeInTheDocument()
   })
 
   it('renders project links with correct attributes', () => {
@@ -32,8 +32,7 @@ describe('Projects', () => {
 
   it('displays project statuses', () => {
     render(<Projects />)
-    expect(screen.getByText('Live')).toBeInTheDocument()
-    expect(screen.getByText('Published 2016')).toBeInTheDocument()
+    expect(screen.getByText('Archived')).toBeInTheDocument()
   })
 
   it('renders technology tags for Resume as Code project', () => {
