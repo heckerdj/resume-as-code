@@ -11,7 +11,7 @@ const projects = [
   },
   {
     title: 'Dawn-of-Discord - Text based RPG',
-    description: 'Deployed discord bots in a personally managed server that ran a text based RPG game and manipulated discord roles to move players between locations within the game.',
+    description: 'Deployed discord bots in a personally managed server that ran a text-based RPG game and manipulated discord roles to move players between locations within the game.',
     technologies: ['MongoDB', 'Python'],
     link: 'https://github.com/heckerdj/Dawn-of-Discord',
     status: 'Archived'
