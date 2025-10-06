@@ -93,7 +93,7 @@
 }
 
 .publication-item {
-  background: linear-gradient(135deg, #fff5f5 0%, #f8f9fa 100%);
+  background: var(--color-bg-card);
   padding: var(--spacing-md);
   border-radius: var(--radius-sm);
   border-left: 4px solid #000;
