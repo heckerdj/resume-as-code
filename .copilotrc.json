@@ -1,0 +1,84 @@
+{
+  "instructions": [
+    {
+      "type": "project-setup",
+      "description": "This is a React + TypeScript project using Vite as the build tool and pnpm as the package manager.",
+      "requirements": [
+        "Always use pnpm for package management operations",
+        "Never use npm or yarn - this project is configured for pnpm only",
+        "The project uses pnpm-lock.yaml for dependency locking"
+      ]
+    },
+    {
+      "type": "package-management",
+      "description": "Package management commands for this repository",
+      "commands": {
+        "install": "pnpm install",
+        "add-dependency": "pnpm add <package-name>",
+        "add-dev-dependency": "pnpm add -D <package-name>",
+        "remove-dependency": "pnpm remove <package-name>",
+        "update-dependencies": "pnpm update",
+        "install-fresh": "rm -rf node_modules && pnpm install"
+      }
+    },
+    {
+      "type": "development-workflow",
+      "description": "Development and build commands",
+      "commands": {
+        "dev": "pnpm dev",
+        "build": "pnpm build",
+        "test": "pnpm test",
+        "test-run": "pnpm test --run",
+        "test-ui": "pnpm test:ui",
+        "test-coverage": "pnpm test:coverage",
+        "lint": "pnpm lint",
+        "preview": "pnpm preview"
+      }
+    },
+    {
+      "type": "css-architecture",
+      "description": "CSS architecture and theming guidelines",
+      "guidelines": [
+        "All CSS should use CSS variables defined in src/App.css",
+        "Never use hard-coded colors, shadows, spacing, or transitions",
+        "Use existing CSS variables: --color-*, --shadow-*, --spacing-*, --transition-*",
+        "Company colors are defined as --color-{company-name} variables",
+        "Dark mode is handled automatically through CSS variable switching",
+        "Add new CSS variables to App.css if needed, with both light and dark mode variants"
+      ]
+    },
+    {
+      "type": "component-structure",
+      "description": "React component guidelines",
+      "guidelines": [
+        "Each component should have its own .css file",
+        "Use TypeScript interfaces for all props",
+        "Follow the existing tabbed navigation structure (Professional Experience / Personal Projects)",
+        "Dark mode toggle is positioned fixed in top-right corner",
+        "Company logos are stored in public/logos/ directory"
+      ]
+    },
+    {
+      "type": "testing",
+      "description": "Testing guidelines and practices",
+      "guidelines": [
+        "All components should have corresponding .test.tsx files",
+        "Tests are located in src/test/ directory",
+        "Use Vitest as the testing framework",
+        "Always run tests after making component changes: pnpm test --run",
+        "Update tests when component props or structure changes"
+      ]
+    },
+    {
+      "type": "git-workflow",
+      "description": "Git and deployment workflow",
+      "guidelines": [
+        "Create feature branches for changes",
+        "GitHub Actions handles CI/CD with conditional preview deployments",
+        "Main branch deploys to production (GitHub Pages)",
+        "PR branches create preview deployments",
+        "Always test locally before committing: pnpm test --run && pnpm build"
+      ]
+    }
+  ]
+}
