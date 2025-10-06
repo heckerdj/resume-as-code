@@ -1,6 +1,40 @@
 import React from 'react';
 import './Experience.css';
 
+interface CompanyInfo {
+  name: string;
+  logo?: string;
+  colorClass: string;
+}
+
+const companyInfo: Record<string, CompanyInfo> = {
+  'Travelers': {
+    name: 'Travelers',
+    logo: '/logos/travelers.svg',
+    colorClass: 'travelers'
+  },
+  'Aetna': {
+    name: 'Aetna, a CVS Health Company',
+    logo: '/logos/aetna.svg',
+    colorClass: 'aetna'
+  },
+  'UTC': {
+    name: 'UTC Aerospace Systems',
+    logo: '/logos/utc.svg',
+    colorClass: 'utc'
+  },
+  'Orgadata': {
+    name: 'Orgadata AG',
+    logo: '/logos/orgadata.svg',
+    colorClass: 'orgadata'
+  },
+  'Clarkson': {
+    name: 'Clarkson University',
+    logo: '/logos/clarkson.svg',
+    colorClass: 'clarkson'
+  }
+};
+
 const Experience: React.FC = () => {
   return (
     <section className="experience-section">
@@ -9,15 +43,23 @@ const Experience: React.FC = () => {
         <div className="experience-content">
           
           {/* Travelers Experience Card */}
-          <div className="employer-card">
+          <div className={`employer-card border-${companyInfo.Travelers.colorClass}`}>
             <div className="employer-header">
-              <h3 className="employer-name">Travelers</h3>
+              {companyInfo.Travelers.logo ? (
+                <img 
+                  src={companyInfo.Travelers.logo} 
+                  alt={companyInfo.Travelers.name}
+                  className="employer-logo"
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{companyInfo.Travelers.name}</h3>
+              )}
               <p className="employer-duration">February 2022 - Present</p>
               <p className="employer-location">Hartford, Connecticut</p>
             </div>
             <div className="roles-container">
               <div className="role">
-                <h4>Senior DevOps Engineer & Engineering Enablement Lead</h4>
+                <h4 className={`color-${companyInfo.Travelers.colorClass}`}>Senior DevOps Engineer & Engineering Enablement Lead</h4>
                 <p className="role-duration">December 2024 - Present</p>
                 <p className="role-location">Hybrid</p>
                 <ul>
@@ -30,7 +72,7 @@ const Experience: React.FC = () => {
               </div>
 
               <div className="role">
-                <h4>DevOps Engineer (Software Engineer II)</h4>
+                <h4 className={`color-${companyInfo.Travelers.colorClass}`}>DevOps Engineer (Software Engineer II)</h4>
                 <p className="role-duration">February 2024 - December 2024</p>
                 <p className="role-location">Hybrid</p>
                 <ul>
@@ -42,7 +84,7 @@ const Experience: React.FC = () => {
               </div>
 
               <div className="role">
-                <h4>DevOps Engineer (Software Engineer I)</h4>
+                <h4 className={`color-${companyInfo.Travelers.colorClass}`}>DevOps Engineer (Software Engineer I)</h4>
                 <p className="role-duration">February 2022 - February 2024</p>
                 <ul>
                   <li>Modernized software delivery by evaluating new tooling and building DORA metrics dashboards</li>
@@ -55,15 +97,23 @@ const Experience: React.FC = () => {
           </div>
 
           {/* Aetna Experience Card */}
-          <div className="employer-card">
+          <div className={`employer-card border-${companyInfo.Aetna.colorClass}`}>
             <div className="employer-header">
-              <h3 className="employer-name">Aetna, a CVS Health Company</h3>
+              {companyInfo.Aetna.logo ? (
+                <img 
+                  src={companyInfo.Aetna.logo} 
+                  alt={companyInfo.Aetna.name}
+                  className="employer-logo"
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{companyInfo.Aetna.name}</h3>
+              )}
               <p className="employer-duration">June 2018 - February 2022</p>
               <p className="employer-location">Hartford, Connecticut</p>
             </div>
             <div className="roles-container">
               <div className="role">
-                <h4>System Engineer</h4>
+                <h4 className={`color-${companyInfo.Aetna.colorClass}`}>System Engineer</h4>
                 <p className="role-duration">June 2020 - February 2022</p>
                 <ul>
                   <li>Developed enterprise pipeline solutions using GitHub Enterprise, CloudBees Jenkins, and Octopus Deploy</li>
@@ -74,7 +124,7 @@ const Experience: React.FC = () => {
               </div>
 
               <div className="role">
-                <h4>Associate System Engineer - IT Technical Training Program</h4>
+                <h4 className={`color-${companyInfo.Aetna.colorClass}`}>Associate System Engineer - IT Technical Training Program</h4>
                 <p className="role-duration">June 2018 - June 2020</p>
                 <ul>
                   <li><strong>DevSecOps:</strong> Automated onboarding processes for enterprise DevOps pipelines, created self-serve documentation reducing monthly ticket intake</li>
@@ -95,7 +145,18 @@ const Experience: React.FC = () => {
             <div className="roles-container">
               <div className="role">
                 <h4>Software Engineering Co-Op</h4>
-                <p className="role-company">UTC Aerospace Systems</p>
+                <p className={`role-company color-${companyInfo.UTC.colorClass}`}>
+                  {companyInfo.UTC.logo ? (
+                    <img 
+                      src={companyInfo.UTC.logo} 
+                      alt={companyInfo.UTC.name}
+                      className="employer-logo"
+                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
+                    />
+                  ) : (
+                    companyInfo.UTC.name
+                  )}
+                </p>
                 <p className="role-duration">January 2017 - September 2017</p>
                 <p className="role-location">Vergennes, Vermont</p>
                 <ul>
@@ -107,7 +168,18 @@ const Experience: React.FC = () => {
 
               <div className="role">
                 <h4>Software Engineering Apprentice</h4>
-                <p className="role-company">Orgadata AG</p>
+                <p className={`role-company color-${companyInfo.Orgadata.colorClass}`}>
+                  {companyInfo.Orgadata.logo ? (
+                    <img 
+                      src={companyInfo.Orgadata.logo} 
+                      alt={companyInfo.Orgadata.name}
+                      className="employer-logo"
+                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
+                    />
+                  ) : (
+                    companyInfo.Orgadata.name
+                  )}
+                </p>
                 <p className="role-duration">September 2017 - December 2017</p>
                 <p className="role-location">Leer, Germany</p>
                 <ul>
@@ -118,7 +190,18 @@ const Experience: React.FC = () => {
 
               <div className="role">
                 <h4>Teaching Assistant (ES 100)</h4>
-                <p className="role-company">Clarkson University</p>
+                <p className={`role-company color-${companyInfo.Clarkson.colorClass}`}>
+                  {companyInfo.Clarkson.logo ? (
+                    <img 
+                      src={companyInfo.Clarkson.logo} 
+                      alt={companyInfo.Clarkson.name}
+                      className="employer-logo"
+                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
+                    />
+                  ) : (
+                    companyInfo.Clarkson.name
+                  )}
+                </p>
                 <p className="role-duration">2015 - May 2017</p>
                 <p className="role-location">Potsdam, New York</p>
                 <ul>

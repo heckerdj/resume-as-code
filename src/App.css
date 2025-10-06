@@ -65,6 +65,14 @@
   
   /* Breakpoints (referenced in media queries) */
   --breakpoint-mobile: 768px;
+  
+  /* Company Brand Colors */
+  --color-travelers: #ed1c24;
+  --color-aetna: #7b2a8d;
+  --color-utc: #005eb8;
+  --color-orgadata: #00a0df;
+  --color-clarkson: #006747;
+  --color-microsoft: #00a4ef;
 }
 
 /* Dark Mode Variables */
@@ -212,4 +220,53 @@ section h2::after {
     margin-left: 0;
     margin-top: var(--spacing-xs);
   }
+}
+
+/* Company Brand Color Utility Classes */
+.color-travelers {
+  color: var(--color-travelers);
+}
+
+.color-aetna {
+  color: var(--color-aetna);
+}
+
+.color-utc {
+  color: var(--color-utc);
+}
+
+.color-orgadata {
+  color: var(--color-orgadata);
+}
+
+.color-clarkson {
+  color: var(--color-clarkson);
+}
+
+.color-microsoft {
+  color: var(--color-microsoft);
+}
+
+.border-travelers {
+  border-left-color: var(--color-travelers) !important;
+}
+
+.border-aetna {
+  border-left-color: var(--color-aetna) !important;
+}
+
+.border-utc {
+  border-left-color: var(--color-utc) !important;
+}
+
+.border-orgadata {
+  border-left-color: var(--color-orgadata) !important;
+}
+
+.border-clarkson {
+  border-left-color: var(--color-clarkson) !important;
+}
+
+.border-microsoft {
+  border-left-color: var(--color-microsoft) !important;
 }
