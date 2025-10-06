@@ -5,6 +5,7 @@
 .tabs-header {
   display: flex;
   justify-content: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   border-bottom: 2px solid var(--color-bg-body);
   margin-bottom: var(--spacing-lg);
@@ -23,9 +24,11 @@
   color: var(--color-text-secondary);
   cursor: pointer;
   position: relative;
-  transition: color 0.15s ease, border-bottom-color 0.2s ease, transform 0.1s ease;
+  transition: color 0.15s ease, border-bottom-color 0.2s ease;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
