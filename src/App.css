@@ -25,8 +25,8 @@
   --color-border-muted: #f1f3f4;
   
   /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
   
   /* Border Radius */
@@ -184,7 +184,7 @@ section h2::after {
 /* Footer */
 .footer {
   background-color: var(--color-bg-card);
-  color:  var(--color-text-primary);
+  color: var(--color-text-primary);
   padding: var(--spacing-lg) 0;
   margin-top: auto;
 }
