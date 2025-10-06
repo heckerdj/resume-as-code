@@ -92,12 +92,8 @@ jobs:
             
             ✅ Tests passed successfully!
             
-            ### 🌐 Live Preview
-            
-            Your changes are now deployed and ready to review:
-            
-            **[🔗 View Preview Site](${previewUrl})**
-            
+            ### 🌐 [Live Preview](${previewUrl})
+                        
             The preview will be automatically updated with each new commit to this PR.
             
             ---
