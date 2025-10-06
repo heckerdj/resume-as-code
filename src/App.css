@@ -67,12 +67,11 @@
   --breakpoint-mobile: 768px;
   
   /* Company Brand Colors */
-  --color-travelers: #ed1c24;
-  --color-aetna: #7b2a8d;
-  --color-utc: #005eb8;
-  --color-orgadata: #00a0df;
-  --color-clarkson: #006747;
-  --color-microsoft: #00a4ef;
+  --color-travelers: #E61616;
+  --color-aetna: #7E3A99;
+  --color-utc: #253D8D;
+  --color-orgadata: #FF5530;
+  --color-clarkson: #004E42;
 }
 
 /* Dark Mode Variables */
@@ -86,7 +85,7 @@
   /* Background Colors */
   --color-bg-body: #18181b;
   --color-bg-section: #27272a;
-  --color-bg-card: linear-gradient(135deg, #27272a 0%, #3f3f46 100%);
+  --color-bg-card: linear-gradient(135deg, #232329 0%,#37373b  100%);
   
   /* Border Colors */
   --color-border-light: #3f3f46;
@@ -265,8 +264,4 @@ section h2::after {
 
 .border-clarkson {
   border-left-color: var(--color-clarkson) !important;
-}
-
-.border-microsoft {
-  border-left-color: var(--color-microsoft) !important;
 }

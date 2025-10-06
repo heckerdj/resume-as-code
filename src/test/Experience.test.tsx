@@ -40,16 +40,31 @@ describe('Experience', () => {
     expect(screen.getByText('Associate System Engineer - IT Technical Training Program')).toBeInTheDocument()
   })
 
-  it('renders other professional experience', () => {
+  it('renders UTC Aerospace Systems employer card', () => {
     render(<Experience />)
-    expect(screen.getByText('Other Professional Experience')).toBeInTheDocument()
     expect(screen.getByText('Software Engineering Co-Op')).toBeInTheDocument()
-    // Check for logos with alt text
+    // Check for UTC logo with alt text
     const utcLogo = screen.getByAltText('UTC Aerospace Systems')
     expect(utcLogo).toBeInTheDocument()
+    expect(screen.getByText('Vergennes, Vermont')).toBeInTheDocument()
+  })
+
+  it('renders Orgadata AG employer card', () => {
+    render(<Experience />)
+    expect(screen.getByText('Software Engineering Apprentice')).toBeInTheDocument()
+    // Check for Orgadata logo with alt text
+    const orgadataLogo = screen.getByAltText('Orgadata AG')
+    expect(orgadataLogo).toBeInTheDocument()
+    expect(screen.getByText('Leer, Germany')).toBeInTheDocument()
+  })
+
+  it('renders Clarkson University employer card', () => {
+    render(<Experience />)
     expect(screen.getByText('Teaching Assistant (ES 100)')).toBeInTheDocument()
+    // Check for Clarkson logo with alt text
     const clarksonLogo = screen.getByAltText('Clarkson University')
     expect(clarksonLogo).toBeInTheDocument()
+    expect(screen.getByText('Potsdam, New York')).toBeInTheDocument()
   })
 
   it('renders role descriptions', () => {
