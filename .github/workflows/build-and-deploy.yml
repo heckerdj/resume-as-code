@@ -1,4 +1,4 @@
-name: Deploy React App to GitHub Pages
+name: Build, Test, and Deploy to GitHub Pages
 
 on:
   push:
@@ -35,6 +35,9 @@ jobs:
           
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        
+      - name: Run tests
+        run: pnpm test run
         
       - name: Build React app
         run: pnpm run build

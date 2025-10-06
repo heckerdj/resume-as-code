@@ -1,11 +1,10 @@
 /* CSS Variables - Design Tokens */
 :root {
   /* Colors */
-  --color-primary: #3498db;
-  --color-primary-dark: #2980b9;
-  --color-secondary: #667eea;
-  --color-secondary-dark: #764ba2;
-  --color-accent: #e74c3c;
+  --color-primary-light: #ba9ffa;
+  --color-primary: #8e66ea;
+  --color-primary-dark: #442761;
+  --color-accent: #8e66ea;
   --color-success: #27ae60;
   --color-warning: #e67e22;
   --color-info: #9b59b6;

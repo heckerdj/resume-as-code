@@ -1,77 +1,77 @@
-name: PR Preview Build
+name: PR Preview
 
 on:
   pull_request:
+    branches: [main]
     types: [opened, synchronize, reopened]
 
 jobs:
-  build-preview:
+  build-and-deploy-preview:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Setup Node.js
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          
+      - name: Setup Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'pnpm'
           
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm test -- --run
         
-      - name: Build React app
-        run: npm run build
+      - name: Build React app with PR preview path
+        run: pnpm run build
+        env:
+          REACT_APP_PR_PATH: previews/pr-${{ github.event.pull_request.number }}
         
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: pr-preview-${{ github.event.pull_request.number }}
-          path: ./dist
-          retention-days: 30
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: previews/pr-${{ github.event.pull_request.number }}
+          keep_files: true
           
-      - name: Comment PR with preview instructions
+      - name: Comment PR with preview link
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const runId = context.runId;
-            const repo = context.repo;
+            const previewUrl = `https://danhecker.com/previews/pr-${prNumber}`;
             
             const commentBody = `## 🎨 Preview Build Ready!
             
-            The site has been built successfully and is available for manual review.
+            ✅ Tests passed successfully!
             
-            ### 📦 Download Preview Artifact
+            ### 🌐 Live Preview
             
-            You can download the built site artifact from this workflow run:
+            Your changes are now deployed and ready to review:
             
-            **[Download pr-preview-${prNumber}](https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId})**
+            **[🔗 View Preview Site](${previewUrl})**
             
-            ### 🔍 How to Review
-            
-            1. Click the link above to go to the workflow run
-            2. Scroll down to the "Artifacts" section
-            3. Download the \`pr-preview-${prNumber}\` artifact
-            4. Extract the ZIP file
-            5. Open \`index.html\` in your browser to review the site
-            
-            Or use a local web server:
-            \`\`\`bash
-            npx serve <extracted-folder>
-            \`\`\`
+            The preview will be automatically updated with each new commit to this PR.
             
             ---
-            *Build triggered by commit ${context.sha.substring(0, 7)}*`;
+            *Preview deployed from commit ${context.sha.substring(0, 7)}*`;
             
             // Find existing comment
             const { data: comments } = await github.rest.issues.listComments({
-              owner: repo.owner,
-              repo: repo.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               issue_number: prNumber,
             });
             
@@ -83,16 +83,16 @@ jobs:
             if (botComment) {
               // Update existing comment
               await github.rest.issues.updateComment({
-                owner: repo.owner,
-                repo: repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 comment_id: botComment.id,
                 body: commentBody
               });
             } else {
               // Create new comment
               await github.rest.issues.createComment({
-                owner: repo.owner,
-                repo: repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 issue_number: prNumber,
                 body: commentBody
               });
