@@ -74,9 +74,8 @@ const Experience: React.FC = () => {
               </div>
 
               <div className="role">
-                <h4>Associate System Engineer</h4>
+                <h4>Associate System Engineer - IT Technical Training Program</h4>
                 <p className="role-duration">June 2018 - June 2020</p>
-                <p className="role-program">IT Technical Training Program - Class of 2020</p>
                 <ul>
                   <li><strong>DevSecOps:</strong> Automated onboarding processes for enterprise DevOps pipelines, created self-serve documentation reducing monthly ticket intake</li>
                   <li><strong>WebEng:</strong> Migrated web applications from 2008 to 2016 shared web servers, retired obsolete applications</li>

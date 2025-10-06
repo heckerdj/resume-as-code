@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -8,6 +9,26 @@ import Tabs from './components/Tabs'
 import './App.css'
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    // Check localStorage for saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode === 'true';
+  });
+
+  useEffect(() => {
+    // Update the HTML root element class
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', isDarkMode.toString());
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const tabs = [
     {
       id: 'professional',
@@ -30,7 +51,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header isDarkMode={isDarkMode} onToggleDarkMode={toggleDarkMode} />
       <div className="app">
         <main className="main-content">
           <Tabs tabs={tabs} defaultTab="professional" />

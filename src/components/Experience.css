@@ -21,7 +21,7 @@
 }
 
 .employer-header {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--color-bg-card);
   padding: var(--spacing-md);
   border-bottom: 2px solid #ecf0f1;
 }
@@ -86,17 +86,6 @@
   color: var(--color-text-primary);
   font-size: 0.9rem;
   margin-bottom: var(--spacing-xs);
-}
-
-.role-program {
-  color: var(--color-text-primary);
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-sm);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  background: var(--color-primary-light);
-  border-radius: var(--radius-xs);
-  display: inline-block;
 }
 
 .role ul {

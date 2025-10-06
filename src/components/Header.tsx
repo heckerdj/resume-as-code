@@ -1,7 +1,13 @@
 import React from 'react';
+import DarkModeToggle from './DarkModeToggle';
 import './Header.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
   return (
     <header className="header">
       <div className="header-content">
@@ -20,6 +26,7 @@ const Header: React.FC = () => {
             <a href="mailto:danjhecker@gmail.com">
               Contact
             </a>
+            <DarkModeToggle isDarkMode={isDarkMode} onToggle={onToggleDarkMode} />
           </div>
         </div>
       </div>
