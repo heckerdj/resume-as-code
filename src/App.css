@@ -20,10 +20,14 @@
   --color-bg-section: white;
   --color-bg-card: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   
+  /* Border Colors */
+  --color-border-light: #ecf0f1;
+  --color-border-muted: #f1f3f4;
+  
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -43,6 +47,21 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+  
+  /* Toggle Switch Colors */
+  --toggle-track-off: #E9E9EA;
+  --toggle-track-on: #65C466;
+  --toggle-thumb: #ffffff;
+  
+  /* Glass/Transparency Effects */
+  --glass-bg-light: rgba(255, 255, 255, 0.2);
+  --glass-bg-light-hover: rgba(255, 255, 255, 0.3);
+  --overlay-dark: rgba(0, 0, 0, 0.1);
+  --text-shadow-dark: rgba(0, 0, 0, 0.3);
+  
+  /* Z-Index Layers */
+  --z-toggle: 1000;
+  --z-header-overlay: 2;
   
   /* Breakpoints (referenced in media queries) */
   --breakpoint-mobile: 768px;
@@ -69,10 +88,18 @@
   --color-bg-section: #27272a;
   --color-bg-card: linear-gradient(135deg, #27272a 0%, #3f3f46 100%);
   
+  /* Border Colors */
+  --color-border-light: #3f3f46;
+  --color-border-muted: #52525b;
+  
   /* Shadows - More subtle in dark mode */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Toggle Switch Colors - Same in dark mode */
+  --toggle-track-off: #39393D;
+  --toggle-track-on: #2ECA45;
 }
 
 /* Global Styles */
@@ -156,8 +183,8 @@ section h2::after {
 
 /* Footer */
 .footer {
-  background-color: #374151; /* Fixed dark gray background - stays same in both themes */
-  color: white; /* Fixed white text - stays same in both themes */
+  background-color: var(--color-bg-card);
+  color: var(--color-text-primary);
   padding: var(--spacing-lg) 0;
   margin-top: auto;
 }
