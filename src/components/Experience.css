@@ -38,6 +38,8 @@
   height: auto;
   margin-bottom: var(--spacing-xs);
   display: block;
+  object-fit: contain;
+  max-height: 60px;
 }
 
 .employer-name-fallback {

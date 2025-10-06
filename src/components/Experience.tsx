@@ -6,31 +6,38 @@ interface CompanyInfo {
   logo?: string;
   colorClass: string;
 }
+const COMPANY_LOGOS = {
+  travelers: 'https://upload.wikimedia.org/wikipedia/de/6/66/Travelers_logo.svg', 
+  aetna: 'https://upload.wikimedia.org/wikipedia/commons/0/01/1_Heart_Aetna_logo_sm_rgb_violet.png',
+  utc: 'https://upload.wikimedia.org/wikipedia/commons/9/97/UTC_Aerospace_Systems.svg', 
+  clarkson: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Clarkson-university-logo-green.png',
+  orgadata: 'https://d1eipm3vz40hy0.cloudfront.net/images/Customer+Stories+/Orgadata/orgadata_logo.png'  // found at https://www.zendesk.com/customer/orgadata/ inspecting the elements on the page.
+} as const;
 
 const companyInfo: Record<string, CompanyInfo> = {
   'Travelers': {
     name: 'Travelers',
-    logo: '/logos/travelers.svg',
+    logo: COMPANY_LOGOS.travelers,
     colorClass: 'travelers'
   },
   'Aetna': {
     name: 'Aetna, a CVS Health Company',
-    logo: '/logos/aetna.svg',
+    logo: COMPANY_LOGOS.aetna,
     colorClass: 'aetna'
   },
   'UTC': {
     name: 'UTC Aerospace Systems',
-    logo: '/logos/utc.svg',
+    logo: COMPANY_LOGOS.utc,
     colorClass: 'utc'
   },
   'Orgadata': {
     name: 'Orgadata AG',
-    logo: '/logos/orgadata.svg',
+    logo: COMPANY_LOGOS.orgadata,
     colorClass: 'orgadata'
   },
   'Clarkson': {
     name: 'Clarkson University',
-    logo: '/logos/clarkson.svg',
+    logo: COMPANY_LOGOS.clarkson,
     colorClass: 'clarkson'
   }
 };
@@ -86,6 +93,7 @@ const Experience: React.FC = () => {
               <div className="role">
                 <h4 className={`color-${companyInfo.Travelers.colorClass}`}>DevOps Engineer (Software Engineer I)</h4>
                 <p className="role-duration">February 2022 - February 2024</p>
+                <p className="role-location">Remote</p>
                 <ul>
                   <li>Modernized software delivery by evaluating new tooling and building DORA metrics dashboards</li>
                   <li>Developed best practices for CI/CD pipelines across Bond and Specialty line of business</li>
@@ -136,74 +144,85 @@ const Experience: React.FC = () => {
             </div>
           </div>
 
-          {/* Other Experience Card */}
-          <div className="employer-card">
+          {/* UTC Aerospace Systems Experience Card */}
+          <div className={`employer-card border-${companyInfo.UTC.colorClass}`}>
             <div className="employer-header">
-              <h3 className="employer-name">Other Professional Experience</h3>
-              <p className="employer-duration">2015 - 2017</p>
+              {companyInfo.UTC.logo ? (
+                <img 
+                  src={companyInfo.UTC.logo} 
+                  alt={companyInfo.UTC.name}
+                  className="employer-logo"
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{companyInfo.UTC.name}</h3>
+              )}
+              <p className="employer-duration">January 2017 - September 2017</p>
+              <p className="employer-location">Vergennes, Vermont</p>
             </div>
             <div className="roles-container">
               <div className="role">
-                <h4>Software Engineering Co-Op</h4>
-                <p className={`role-company color-${companyInfo.UTC.colorClass}`}>
-                  {companyInfo.UTC.logo ? (
-                    <img 
-                      src={companyInfo.UTC.logo} 
-                      alt={companyInfo.UTC.name}
-                      className="employer-logo"
-                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
-                    />
-                  ) : (
-                    companyInfo.UTC.name
-                  )}
-                </p>
+                <h4 className={`color-${companyInfo.UTC.colorClass}`}>Software Engineering Co-Op</h4>
                 <p className="role-duration">January 2017 - September 2017</p>
-                <p className="role-location">Vergennes, Vermont</p>
                 <ul>
                   <li>Developed front-end UI features for Black Hawk ground station using SVN version control</li>
                   <li>Redesigned middleware, Windows service, and SQL Server database architecture</li>
                   <li>Tested Pulse Ground Station (Silverlight application) using automated UI tests</li>
                 </ul>
               </div>
+            </div>
+          </div>
 
+          {/* Orgadata AG Experience Card */}
+          <div className={`employer-card border-${companyInfo.Orgadata.colorClass}`}>
+            <div className="employer-header">
+              {companyInfo.Orgadata.logo ? (
+                <img 
+                  src={companyInfo.Orgadata.logo} 
+                  alt={companyInfo.Orgadata.name}
+                  className="employer-logo"
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{companyInfo.Orgadata.name}</h3>
+              )}
+              <p className="employer-duration">September 2017 - December 2017</p>
+              <p className="employer-location">Leer, Germany</p>
+            </div>
+            <div className="roles-container">
               <div className="role">
-                <h4>Software Engineering Apprentice</h4>
-                <p className={`role-company color-${companyInfo.Orgadata.colorClass}`}>
-                  {companyInfo.Orgadata.logo ? (
-                    <img 
-                      src={companyInfo.Orgadata.logo} 
-                      alt={companyInfo.Orgadata.name}
-                      className="employer-logo"
-                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
-                    />
-                  ) : (
-                    companyInfo.Orgadata.name
-                  )}
-                </p>
+                <h4 className={`color-${companyInfo.Orgadata.colorClass}`}>Software Engineering Apprentice</h4>
                 <p className="role-duration">September 2017 - December 2017</p>
-                <p className="role-location">Leer, Germany</p>
                 <ul>
                   <li>International apprenticeship teaching C# programming fundamentals</li>
                   <li>Taught month-long introduction to basic C# programming to German high school students</li>
                 </ul>
               </div>
+            </div>
+          </div>
 
+          {/* Clarkson University Experience Card */}
+          <div className={`employer-card border-${companyInfo.Clarkson.colorClass}`}>
+            <div className="employer-header">
+              {companyInfo.Clarkson.logo ? (
+                <img 
+                  src={companyInfo.Clarkson.logo} 
+                  alt={companyInfo.Clarkson.name}
+                  className="employer-logo"
+                  onError={(e) => {
+                    console.error('Failed to load Clarkson logo:', companyInfo.Clarkson.logo);
+                    console.error('Error event:', e);
+                  }}
+                  onLoad={() => console.log('Clarkson logo loaded successfully')}
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{companyInfo.Clarkson.name}</h3>
+              )}
+              <p className="employer-duration">2015 - May 2017</p>
+              <p className="employer-location">Potsdam, New York</p>
+            </div>
+            <div className="roles-container">
               <div className="role">
-                <h4>Teaching Assistant (ES 100)</h4>
-                <p className={`role-company color-${companyInfo.Clarkson.colorClass}`}>
-                  {companyInfo.Clarkson.logo ? (
-                    <img 
-                      src={companyInfo.Clarkson.logo} 
-                      alt={companyInfo.Clarkson.name}
-                      className="employer-logo"
-                      style={{ maxWidth: '100px', display: 'inline-block', verticalAlign: 'middle' }}
-                    />
-                  ) : (
-                    companyInfo.Clarkson.name
-                  )}
-                </p>
+                <h4 className={`color-${companyInfo.Clarkson.colorClass}`}>Teaching Assistant (ES 100)</h4>
                 <p className="role-duration">2015 - May 2017</p>
-                <p className="role-location">Potsdam, New York</p>
                 <ul>
                   <li>Utilized troubleshooting for both syntax and conceptual errors in code</li>
                   <li>Educated peers using flexible communication skills, adjusting teaching styles for individual effectiveness</li>
