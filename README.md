@@ -41,7 +41,17 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ### Prerequisites
 - Node.js 20+
-- pnpm
+- pnpm (required - this project uses pnpm exclusively)
+
+### Package Manager Setup
+This project uses **pnpm** as the package manager. Do not use npm or yarn.
+
+```bash
+# Install pnpm globally if you don't have it
+npm install -g pnpm
+# or
+corepack enable pnpm
+```
 
 ### Local Development
 ```bash
@@ -53,25 +63,28 @@ cd resume-as-code
 pnpm install
 
 # Start development server
-pnpm run dev
+pnpm dev
 
 # Run tests
-npm test
+pnpm test
+
+# Run tests once (for CI/validation)
+pnpm test --run
 
 # Run tests with UI
-npm run test:ui
+pnpm test:ui
 
 # Run tests with coverage
-npm run test:coverage
+pnpm test:coverage
 
 # Build for production
-pnpm run build
+pnpm build
 
 # Preview production build
-pnpm run preview
+pnpm preview
 
 # Lint code
-npm run lint
+pnpm lint
 ```
 
 ### Project Structure
