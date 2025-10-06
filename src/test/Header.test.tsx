@@ -2,19 +2,25 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import Header from '../components/Header'
 
+// Mock props for Header component
+const mockProps = {
+  isDarkMode: false,
+  onToggleDarkMode: () => {}
+}
+
 describe('Header', () => {
   it('renders the name correctly', () => {
-    render(<Header />)
+    render(<Header {...mockProps} />)
     expect(screen.getByText('Dan Hecker')).toBeInTheDocument()
   })
 
   it('renders the title correctly', () => {
-    render(<Header />)
+    render(<Header {...mockProps} />)
     expect(screen.getByText('Senior DevOps Engineer & Engineering Enablement Lead')).toBeInTheDocument()
   })
 
   it('renders GitHub link with correct attributes', () => {
-    render(<Header />)
+    render(<Header {...mockProps} />)
     const githubLink = screen.getByText('GitHub')
     expect(githubLink).toBeInTheDocument()
     expect(githubLink).toHaveAttribute('href', 'https://github.com/heckerdj')
@@ -23,7 +29,7 @@ describe('Header', () => {
   })
 
   it('renders LinkedIn link with correct attributes', () => {
-    render(<Header />)
+    render(<Header {...mockProps} />)
     const linkedinLink = screen.getByText('LinkedIn')
     expect(linkedinLink).toBeInTheDocument()
     expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/danhecker/')
@@ -32,7 +38,7 @@ describe('Header', () => {
   })
 
   it('renders Contact email link', () => {
-    render(<Header />)
+    render(<Header {...mockProps} />)
     const contactLink = screen.getByText('Contact')
     expect(contactLink).toBeInTheDocument()
     expect(contactLink).toHaveAttribute('href', 'mailto:danjhecker@gmail.com')
