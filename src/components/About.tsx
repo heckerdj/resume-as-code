@@ -10,7 +10,7 @@ const About: React.FC = () => {
           <p>
             I am a software engineer by degree and a DevOps engineer by practice and interest. 
             I appreciate taking on new challenges and particularly enjoy automation which has led me 
-            to my career in automating code delivery. From source control best practices, through build, 
+            to my career in automating code delivery. From source control best practices, through build,
             test, scan, deploy, promotion and release I thrive on improving the process in both security and speed.
           </p>
         </div>
