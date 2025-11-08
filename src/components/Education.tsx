@@ -1,5 +1,6 @@
 import React from 'react';
 import './Education.css';
+import { COMPANY_INFO } from '../constants/companyLogos';
 
 const Education: React.FC = () => {
   return (
@@ -9,14 +10,14 @@ const Education: React.FC = () => {
         <div className="education-content">
           <div className="education-item">
             <h3>Bachelor of Science (B.S.), Software Engineering</h3>
-            <p className="institution">Clarkson University</p>
-            <p className="location">Potsdam, New York</p>
-            <div className="education-skills">
-              <span className="skill-tag">MATLAB</span>
-              <span className="skill-tag">Java</span>
-              <span className="skill-tag">Software Engineering</span>
-              <span className="skill-tag">Computer Science</span>
+            <div className="institution-with-logo">
+              <img 
+                src={COMPANY_INFO.Clarkson.logo} 
+                alt="Clarkson University Logo" 
+                className="institution-logo"
+              />
             </div>
+            <p className="location">Potsdam, New York</p>
           </div>
 
           <div className="certifications">
@@ -26,13 +27,27 @@ const Education: React.FC = () => {
                 <h4>GitHub Actions</h4>
                 <p className="cert-issuer">GitHub</p>
                 <p className="cert-date">May 2025 - May 2028</p>
-                <p className="cert-id">Credential ID: 502ed1cd-6f59-4645-9731-df843d2eb6ee</p>
+                <a 
+                  href="https://www.credly.com/badges/502ed1cd-6f59-4645-9731-df843d2eb6ee/public_url" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="credential-button"
+                >
+                  Show Credential
+                </a>
               </div>
               <div className="cert-item">
                 <h4>Cryptocurrency</h4>
                 <p className="cert-issuer">MIT MediaLab</p>
                 <p className="cert-date">August 2022</p>
-                <p className="cert-id">Credential ID: 55884134</p>
+                <a 
+                  href="https://mitmedialab.credential.getsmarter.com/52d39e47-17e8-4c5e-90bf-b76d7a23bc8b#acc.K4dQlaoe" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="credential-button"
+                >
+                  Show Credential
+                </a>
               </div>
             </div>
           </div>
