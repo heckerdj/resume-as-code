@@ -63,27 +63,6 @@
   margin-bottom: 0;
 }
 
-/* Border color variants for education cards */
-.education-item.border-travelers {
-  border-left-color: var(--color-travelers);
-}
-
-.education-item.border-aetna {
-  border-left-color: var(--color-aetna);
-}
-
-.education-item.border-utc {
-  border-left-color: var(--color-utc);
-}
-
-.education-item.border-orgadata {
-  border-left-color: var(--color-orgadata);
-}
-
-.education-item.border-clarkson {
-  border-left-color: var(--color-clarkson);
-}
-
 .education-skills {
   display: flex;
   flex-wrap: wrap;
