@@ -1,8 +1,19 @@
 {
   "instructions": [
     {
+      "type": "project-overview",
+      "description": "This is a personal resume website (resume-as-code) built with React + TypeScript, using Vite as the build tool and pnpm as the package manager. The site showcases professional experience, skills, education, and certifications in an interactive, modern web interface deployed via GitHub Pages at https://DanHecker.com",
+      "key-features": [
+        "Tabbed navigation between Professional Experience and Personal Projects",
+        "Dark mode toggle with CSS variable-based theming",
+        "Responsive design optimized for mobile and desktop",
+        "Company-branded color schemes for employer cards",
+        "Automated CI/CD pipeline with PR preview deployments"
+      ]
+    },
+    {
       "type": "project-setup",
-      "description": "This is a React + TypeScript project using Vite as the build tool and pnpm as the package manager.",
+      "description": "Package manager and build tool requirements",
       "requirements": [
         "Always use pnpm for package management operations",
         "Never use npm or yarn - this project is configured for pnpm only",
