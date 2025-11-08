@@ -4,7 +4,7 @@ export const COMPANY_LOGOS = {
   aetna: 'https://upload.wikimedia.org/wikipedia/commons/0/01/1_Heart_Aetna_logo_sm_rgb_violet.png',
   utc: 'https://upload.wikimedia.org/wikipedia/commons/9/97/UTC_Aerospace_Systems.svg', 
   clarkson: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Clarkson-university-logo-green.png',
-  orgadata: 'https://d1eipm3vz40hy0.cloudfront.net/images/Customer+Stories+/Orgadata/orgadata_logo.png'
+  orgadata: 'https://d1eipm3vz40hy0.cloudfront.net/images/Customer%20Stories%20/Orgadata/orgadata_logo.png'
 } as const;
 
 // Company information interface
