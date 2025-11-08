@@ -10,18 +10,17 @@ describe('Skills', () => {
 
   it('renders all skill categories', () => {
     render(<Skills />)
-    expect(screen.getByText('DevOps & Cloud')).toBeInTheDocument()
+    expect(screen.getByText('DevOps')).toBeInTheDocument()
     expect(screen.getByText('Programming Languages')).toBeInTheDocument()
     expect(screen.getByText('Tools & Technologies')).toBeInTheDocument()
-    expect(screen.getByText('Web & Frontend')).toBeInTheDocument()
   })
 
-  it('renders DevOps & Cloud skills', () => {
+  it('renders DevOps skills', () => {
     render(<Skills />)
     expect(screen.getByText('Terraform')).toBeInTheDocument()
     expect(screen.getByText('GitHub Actions')).toBeInTheDocument()
-    expect(screen.getByText('Docker')).toBeInTheDocument()
-    expect(screen.getByText('Kubernetes')).toBeInTheDocument()
+    expect(screen.getByText('Helm')).toBeInTheDocument()
+    expect(screen.getByText('UrbanCode Deploy')).toBeInTheDocument()
   })
 
   it('renders Programming Languages', () => {
@@ -32,10 +31,11 @@ describe('Skills', () => {
     expect(screen.getByText('JavaScript')).toBeInTheDocument()
   })
 
-  it('renders Web & Frontend skills', () => {
+  it('renders Tools & Technologies skills', () => {
     render(<Skills />)
     expect(screen.getByText('React')).toBeInTheDocument()
-    expect(screen.getByText('HTML/CSS')).toBeInTheDocument()
-    expect(screen.getByText('Vite')).toBeInTheDocument()
+    expect(screen.getByText('GitHub Pages')).toBeInTheDocument()
+    expect(screen.getByText('Dynatrace')).toBeInTheDocument()
+    expect(screen.getByText('SonarQube')).toBeInTheDocument()
   })
 })
