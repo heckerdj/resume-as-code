@@ -9,6 +9,6 @@ A personal resume website built with React, TypeScript, and deployed via GitHub 
 
 ## 🚀 Upcoming Features
 
-- 🔄 Under construction: PDF download functionality
-- 🔄 Under construction: diagram visualization of the project
+- 🔄 PDF download button
+- 🔄 Preview site on PR
 
