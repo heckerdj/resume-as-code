@@ -1,11 +1,10 @@
 /* CSS Variables - Design Tokens */
 :root {
   /* Colors */
-  --color-primary: #3498db;
-  --color-primary-dark: #2980b9;
-  --color-secondary: #667eea;
-  --color-secondary-dark: #764ba2;
-  --color-accent: #e74c3c;
+  --color-primary-light: #ba9ffa;
+  --color-primary: #8e66ea;
+  --color-primary-dark: #442761;
+  --color-accent: #8e66ea;
   --color-success: #27ae60;
   --color-warning: #e67e22;
   --color-info: #9b59b6;
@@ -21,10 +20,14 @@
   --color-bg-section: white;
   --color-bg-card: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   
+  /* Border Colors */
+  --color-border-light: #ecf0f1;
+  --color-border-muted: #f1f3f4;
+  
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -45,8 +48,57 @@
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
   
+  /* Toggle Switch Colors */
+  --toggle-track-off: #E9E9EA;
+  --toggle-track-on: #65C466;
+  --toggle-thumb: #ffffff;
+  
+  /* Glass/Transparency Effects */
+  --glass-bg-light: rgba(255, 255, 255, 0.2);
+  --glass-bg-light-hover: rgba(255, 255, 255, 0.3);
+  --overlay-dark: rgba(0, 0, 0, 0.1);
+  --text-shadow-dark: rgba(0, 0, 0, 0.3);
+  
+  /* Z-Index Layers */
+  --z-toggle: 1000;
+  --z-header-overlay: 2;
+  
   /* Breakpoints (referenced in media queries) */
   --breakpoint-mobile: 768px;
+  
+  /* Company Brand Colors */
+  --color-travelers: #E61616;
+  --color-aetna: #7E3A99;
+  --color-utc: #253D8D;
+  --color-orgadata: #FF5530;
+  --color-clarkson: #004E42;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+  /* Text Colors */
+  --color-text-primary: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-text-light: #52525b;
+  
+  /* Background Colors */
+  --color-bg-body: #18181b;
+  --color-bg-section: #27272a;
+  --color-bg-card: linear-gradient(135deg, #232329 0%,#37373b  100%);
+  
+  /* Border Colors */
+  --color-border-light: #3f3f46;
+  --color-border-muted: #52525b;
+  
+  /* Shadows - More subtle in dark mode */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Toggle Switch Colors - Same in dark mode */
+  --toggle-track-off: #39393D;
+  --toggle-track-on: #2ECA45;
 }
 
 /* Global Styles */
@@ -130,8 +182,8 @@ section h2::after {
 
 /* Footer */
 .footer {
-  background-color: var(--color-text-primary);
-  color: white;
+  background-color: var(--color-bg-card);
+  color: var(--color-text-primary);
   padding: var(--spacing-lg) 0;
   margin-top: auto;
 }
@@ -167,4 +219,49 @@ section h2::after {
     margin-left: 0;
     margin-top: var(--spacing-xs);
   }
+}
+
+/* Company Brand Color Utility Classes */
+.color-travelers {
+  color: var(--color-travelers);
+}
+
+.color-aetna {
+  color: var(--color-aetna);
+}
+
+.color-utc {
+  color: var(--color-utc);
+}
+
+.color-orgadata {
+  color: var(--color-orgadata);
+}
+
+.color-clarkson {
+  color: var(--color-clarkson);
+}
+
+.color-microsoft {
+  color: var(--color-microsoft);
+}
+
+.border-travelers {
+  border-left-color: var(--color-travelers) !important;
+}
+
+.border-aetna {
+  border-left-color: var(--color-aetna) !important;
+}
+
+.border-utc {
+  border-left-color: var(--color-utc) !important;
+}
+
+.border-orgadata {
+  border-left-color: var(--color-orgadata) !important;
+}
+
+.border-clarkson {
+  border-left-color: var(--color-clarkson) !important;
 }

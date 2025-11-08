@@ -3,8 +3,8 @@ import './Skills.css';
 
 const skillCategories = [
   {
-    category: 'DevOps & Cloud',
-    skills: ['Terraform', 'GitHub Actions', 'CloudBees Jenkins', 'Octopus Deploy', 'Azure', 'Docker', 'Kubernetes']
+    category: 'DevOps',
+    skills: ['Terraform', 'GitHub Actions', 'CloudBees Jenkins', 'Octopus Deploy', 'Helm', 'UrbanCode Deploy']
   },
   {
     category: 'Programming Languages',
@@ -12,11 +12,7 @@ const skillCategories = [
   },
   {
     category: 'Tools & Technologies',
-    skills: ['GitHub Enterprise', 'Git', 'SVN', 'SQL Server', 'Linux', 'Windows Services', 'Silverlight', 'Android Development']
-  },
-  {
-    category: 'Web & Frontend',
-    skills: ['React', 'HTML/CSS', 'UI/UX Design', 'Responsive Design', 'GitHub Pages', 'Vite']
+    skills: ['GitHub Enterprise', 'Git', 'Linux', 'React', 'GitHub Pages', 'Dynatrace', 'SonarQube']
   }
 ];
 
