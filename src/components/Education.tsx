@@ -8,16 +8,17 @@ const Education: React.FC = () => {
       <div className="container">
         <h2>Education & Certifications</h2>
         <div className="education-content">
-          <div className="education-item">
-            <h3>Bachelor of Science (B.S.), Software Engineering</h3>
-            <div className="institution-with-logo">
+          <div className={`education-item border-${COMPANY_INFO.Clarkson.colorClass}`}>
+            <div className="education-header">
               <img 
                 src={COMPANY_INFO.Clarkson.logo} 
                 alt="Clarkson University Logo" 
                 className="institution-logo"
               />
+              <h3>Bachelor of Science (B.S.), Software Engineering</h3>
+              <p className="institution-name">{COMPANY_INFO.Clarkson.name}</p>
+              <p className="location">Potsdam, New York</p>
             </div>
-            <p className="location">Potsdam, New York</p>
           </div>
 
           <div className="certifications">
