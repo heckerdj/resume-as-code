@@ -20,11 +20,33 @@ describe('Projects', () => {
     expect(screen.getByText(/Deployed discord bots in a personally managed server/)).toBeInTheDocument()
   })
 
+  it('renders 3D Printing project', () => {
+    render(<Projects />)
+    expect(screen.getByRole('heading', { name: '3D Printing' })).toBeInTheDocument()
+    expect(screen.getByText(/Exploring additive manufacturing through 3D printing/)).toBeInTheDocument()
+  })
+
+  it('renders 3D Printing project with both MakerWorld and Printables links', () => {
+    render(<Projects />)
+    const makerWorldLink = screen.getByText('MakerWorld')
+    const printablesLink = screen.getByText('Printables')
+    
+    expect(makerWorldLink).toHaveAttribute('href', 'https://makerworld.com/en/@Doalzer')
+    expect(printablesLink).toHaveAttribute('href', 'https://www.printables.com/@Doalzer')
+  })
+
   it('renders project links with correct attributes', () => {
     render(<Projects />)
-    const links = screen.getAllByText('View Project')
-    expect(links).toHaveLength(2)
-    links.forEach(link => {
+    const viewLinks = screen.getAllByText('View Project')
+    const makerWorldLink = screen.getByText('MakerWorld')
+    const printablesLink = screen.getByText('Printables')
+    
+    // Check that "View Project" appears for projects without secondaryLink
+    expect(viewLinks).toHaveLength(2)
+    
+    // Check all links have correct attributes
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink]
+    allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
     })
