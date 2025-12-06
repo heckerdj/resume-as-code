@@ -20,7 +20,7 @@ const projects: Project[] = [
   },
   {
     title: '3D Printing',
-    description: 'Exploring additive manufacturing through 3D printing. Creating and sharing custom designs on MakerWorld and Printables platforms.',
+    description: 'Exploring additive manufacturing through 3D printing. Started sharing designs on Printables and now primarily using MakerWorld to create and publish custom models.',
     technologies: ['3D Printing', 'CAD Design', 'Additive Manufacturing'],
     link: 'https://makerworld.com/en/@Doalzer',
     secondaryLink: 'https://www.printables.com/@Doalzer',
