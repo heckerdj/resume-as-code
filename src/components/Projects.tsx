@@ -1,13 +1,30 @@
 import React from 'react';
 import './Projects.css';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+  secondaryLink?: string;
+  status: string;
+}
+
+const projects: Project[] = [
   {
     title: 'DanHecker.com - Resume as Code',
     description: 'Personal resume site built with React, TypeScript, and deployed via GitHub Pages with automated CI/CD pipeline. Showcases modern web development practices and DevOps integration.',
     technologies: ['React', 'TypeScript', 'GitHub Actions', 'GitHub Pages', 'Vite', 'CSS3'],
     link: 'https://github.com/heckerdj/resume-as-code',
     status: 'Live'
+  },
+  {
+    title: '3D Printing',
+    description: 'Exploring additive manufacturing through 3D printing. Started sharing designs on Printables and now primarily using MakerWorld to create and publish custom models.',
+    technologies: ['3D Printing', 'CAD Design', 'Additive Manufacturing'],
+    link: 'https://makerworld.com/en/@Doalzer',
+    secondaryLink: 'https://www.printables.com/@Doalzer',
+    status: 'Hobby'
   },
   {
     title: 'Dawn-of-Discord - Text-based RPG',
@@ -37,8 +54,13 @@ const Projects: React.FC = () => {
               </div>
               <div className="project-links">
                 <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  View Project
+                  {project.secondaryLink ? 'MakerWorld' : 'View Project'}
                 </a>
+                {project.secondaryLink && (
+                  <a href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
+                    Printables
+                  </a>
+                )}
                 <span className="project-status">{project.status}</span>
               </div>
             </div>
