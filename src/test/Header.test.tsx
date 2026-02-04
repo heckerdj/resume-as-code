@@ -41,6 +41,6 @@ describe('Header', () => {
     render(<Header {...mockProps} />)
     const contactLink = screen.getByText('Contact')
     expect(contactLink).toBeInTheDocument()
-    expect(contactLink).toHaveAttribute('href', 'mailto:danjhecker@gmail.com')
+    expect(contactLink).toHaveAttribute('href', 'mailto:me@danhecker.com')
   })
 })

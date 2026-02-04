@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
               <a href="https://www.linkedin.com/in/danhecker/" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
-              <a href="mailto:danjhecker@gmail.com">
+              <a href="mailto:me@danhecker.com">
                 Contact
               </a>
             </div>
