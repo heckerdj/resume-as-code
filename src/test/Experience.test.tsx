@@ -68,6 +68,14 @@ describe('Experience', () => {
     expect(screen.getByText('Potsdam, New York')).toBeInTheDocument()
   })
 
+  it('renders Clarkson TA position with correct start date', () => {
+    render(<Experience />)
+    // Check that the TA position shows August 2015 as start date
+    const clarksonDates = screen.getAllByText('August 2015 - May 2017')
+    // Should appear twice: once for employer-duration and once for role-duration
+    expect(clarksonDates).toHaveLength(2)
+  })
+
   it('renders role descriptions', () => {
     render(<Experience />)
     // Current role (Senior Software Engineer)

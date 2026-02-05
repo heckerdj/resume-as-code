@@ -184,13 +184,13 @@ const Experience: React.FC = () => {
               ) : (
                 <h3 className="employer-name-fallback">{COMPANY_INFO.Clarkson.name}</h3>
               )}
-              <p className="employer-duration">2015 - May 2017</p>
+              <p className="employer-duration">August 2015 - May 2017</p>
               <p className="employer-location">Potsdam, New York</p>
             </div>
             <div className="roles-container">
               <div className="role">
                 <h4 className={`color-${COMPANY_INFO.Clarkson.colorClass}`}>Teaching Assistant (ES 100)</h4>
-                <p className="role-duration">2015 - May 2017</p>
+                <p className="role-duration">August 2015 - May 2017</p>
                 <ul>
                   <li>Utilized troubleshooting for both syntax and conceptual errors in code</li>
                   <li>Educated peers using flexible communication skills, adjusting teaching styles for individual effectiveness</li>
