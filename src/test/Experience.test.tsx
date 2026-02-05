@@ -21,7 +21,8 @@ describe('Experience', () => {
 
   it('renders all Travelers roles', () => {
     render(<Experience />)
-    expect(screen.getByText('Senior Software & DevOps Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Engineering Enablement Lead (Software Engineer II)')).toBeInTheDocument()
     expect(screen.getByText('DevOps Engineer (Software Engineer II)')).toBeInTheDocument()
     expect(screen.getByText('DevOps Engineer (Software Engineer I)')).toBeInTheDocument()
   })
