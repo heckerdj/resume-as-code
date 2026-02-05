@@ -16,7 +16,7 @@ describe('Header', () => {
 
   it('renders the title correctly', () => {
     render(<Header {...mockProps} />)
-    expect(screen.getByText('Senior DevOps Engineer & Engineering Enablement Lead')).toBeInTheDocument()
+    expect(screen.getByText('Senior Software & DevOps Engineer')).toBeInTheDocument()
   })
 
   it('renders GitHub link with correct attributes', () => {

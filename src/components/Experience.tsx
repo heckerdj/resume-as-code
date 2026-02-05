@@ -26,7 +26,7 @@ const Experience: React.FC = () => {
             </div>
             <div className="roles-container">
               <div className="role">
-                <h4 className={`color-${COMPANY_INFO.Travelers.colorClass}`}>Senior DevOps Engineer & Engineering Enablement Lead</h4>
+                <h4 className={`color-${COMPANY_INFO.Travelers.colorClass}`}>Senior Software & DevOps Engineer</h4>
                 <p className="role-duration">December 2024 - Present</p>
                 <p className="role-location">Hybrid</p>
                 <ul>
