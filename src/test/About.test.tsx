@@ -10,13 +10,13 @@ describe('About', () => {
 
   it('renders the about description', () => {
     render(<About />)
-    expect(screen.getByText(/I am a software engineer by degree/)).toBeInTheDocument()
-    expect(screen.getByText(/DevOps engineer by practice/)).toBeInTheDocument()
+    expect(screen.getByText(/I'm a software engineer with a strong foundation/)).toBeInTheDocument()
+    expect(screen.getByText(/DevOps, platform engineering, and automation/)).toBeInTheDocument()
   })
 
   it('renders the complete about section content', () => {
     render(<About />)
-    expect(screen.getByText(/automation which has led me to my career/)).toBeInTheDocument()
-    expect(screen.getByText(/improving the process in both security and speed/)).toBeInTheDocument()
+    expect(screen.getByText(/removing friction from the development lifecycle/)).toBeInTheDocument()
+    expect(screen.getByText(/improve speed, security, and reliability/)).toBeInTheDocument()
   })
 })
