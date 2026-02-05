@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
         <div className="header-content">
           <div className="profile-section">
             <h1 className="name">Dan Hecker</h1>
-            <p className="title">Senior DevOps Engineer & Engineering Enablement Lead</p>
+            <p className="title">Senior Software & DevOps Engineer</p>
           </div>
           <div className="contact-info">
             <div className="contact-links">

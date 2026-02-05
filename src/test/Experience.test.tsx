@@ -21,7 +21,8 @@ describe('Experience', () => {
 
   it('renders all Travelers roles', () => {
     render(<Experience />)
-    expect(screen.getByText('Senior DevOps Engineer & Engineering Enablement Lead')).toBeInTheDocument()
+    expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Engineering Enablement Lead (Software Engineer II)')).toBeInTheDocument()
     expect(screen.getByText('DevOps Engineer (Software Engineer II)')).toBeInTheDocument()
     expect(screen.getByText('DevOps Engineer (Software Engineer I)')).toBeInTheDocument()
   })
@@ -69,7 +70,11 @@ describe('Experience', () => {
 
   it('renders role descriptions', () => {
     render(<Experience />)
-    expect(screen.getByText(/Lead a globally distributed team of 10\+ engineers/)).toBeInTheDocument()
+    // Current role (Senior Software Engineer)
+    expect(screen.getByText(/Create internal platforms that remove friction/)).toBeInTheDocument()
+    // Previous role (Engineering Enablement Lead) - past tense
+    expect(screen.getByText(/Led a globally distributed team of 10\+ engineers/)).toBeInTheDocument()
+    // DevOps Engineer role
     expect(screen.getByText(/Designed and implemented CI\/CD pipelines/)).toBeInTheDocument()
   })
 })

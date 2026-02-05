@@ -8,10 +8,9 @@ const About: React.FC = () => {
         <h2>About Me</h2>
         <div className="about-content">
           <p>
-            I am a software engineer by degree and a DevOps engineer by practice and interest. 
-            I appreciate taking on new challenges and particularly enjoy automation which has led me 
-            to my career in automating code delivery. From source control best practices, through build,
-            test, scan, deploy, promotion and release I thrive on improving the process in both security and speed.
+            I'm a software engineer with a strong foundation in DevOps, platform engineering, and automation, 
+            driven by a passion for removing friction from the development lifecycle. I thrive at the intersection 
+            of tooling, process, and people, creating systems that improve speed, security, and reliability.
           </p>
         </div>
       </div>

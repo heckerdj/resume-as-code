@@ -26,15 +26,23 @@ const Experience: React.FC = () => {
             </div>
             <div className="roles-container">
               <div className="role">
-                <h4 className={`color-${COMPANY_INFO.Travelers.colorClass}`}>Senior DevOps Engineer & Engineering Enablement Lead</h4>
-                <p className="role-duration">December 2024 - Present</p>
+                <h4 className={`color-${COMPANY_INFO.Travelers.colorClass}`}>Senior Software Engineer</h4>
+                <p className="role-duration">February 2026 - Present</p>
                 <p className="role-location">Hybrid</p>
                 <ul>
-                  <li>Drive initiatives that improve developer productivity, streamline CI/CD workflows, and reduce operational overhead</li>
-                  <li>Lead a globally distributed team of 10+ engineers and contractors</li>
-                  <li>Collaborate closely with cross-functional partners to deliver scalable automation solutions</li>
-                  <li>Build tools, pipelines, and best practices that empower engineering teams to ship faster and with greater confidence</li>
                   <li>Create internal platforms that remove friction and enable engineers to do their best work</li>
+                </ul>
+              </div>
+
+              <div className="role">
+                <h4 className={`color-${COMPANY_INFO.Travelers.colorClass}`}>Engineering Enablement Lead (Software Engineer II)</h4>
+                <p className="role-duration">December 2024 - February 2026</p>
+                <p className="role-location">Hybrid</p>
+                <ul>
+                  <li>Drove initiatives that improved developer productivity, streamlined CI/CD workflows, and reduced operational overhead</li>
+                  <li>Led a globally distributed team of 10+ engineers and contractors</li>
+                  <li>Collaborated closely with cross-functional partners to deliver scalable automation solutions</li>
+                  <li>Built tools, pipelines, and best practices that empowered engineering teams to ship faster and with greater confidence</li>
                 </ul>
               </div>
 
