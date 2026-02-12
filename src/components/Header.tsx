@@ -9,7 +9,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
   return (
-    <>
       {/* Dark mode toggle positioned in top right corner */}
       <DarkModeToggle isDarkMode={isDarkMode} onToggle={onToggleDarkMode} />
       <header className="header">
@@ -29,6 +28,9 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
               <a href="mailto:me@danhecker.com">
                 Contact
               </a>
+              <a href="/Dan_Hecker_Resume.pdf" download className="download-btn">
+              Download PDF
+            </a>
             </div>
           </div>
         </div>
