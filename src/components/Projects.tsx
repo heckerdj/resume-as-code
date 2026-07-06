@@ -6,7 +6,9 @@ interface Project {
   description: string;
   technologies: string[];
   link: string;
+  linkLabel?: string;
   secondaryLink?: string;
+  secondaryLinkLabel?: string;
   status: string;
 }
 
@@ -16,6 +18,16 @@ const projects: Project[] = [
     description: 'Personal resume site built with React, TypeScript, and deployed via GitHub Pages with automated CI/CD pipeline. Showcases modern web development practices and DevOps integration.',
     technologies: ['React', 'TypeScript', 'GitHub Actions', 'GitHub Pages', 'Vite', 'CSS3'],
     link: 'https://github.com/heckerdj/resume-as-code',
+    status: 'Live'
+  },
+  {
+    title: 'Family Recipe Box',
+    description: 'The family recipe box, digitized. A fully static, backend-free site on GitHub Pages: photos of handwritten cards are transcribed with Claude vision, compiled from markdown into JSON, and published with ingredient, time, effort, and cuisine search alongside scans of the original cards.',
+    technologies: ['JavaScript', 'Node.js', 'GitHub Pages', 'PWA'],
+    link: 'https://danhecker.com/recipes/',
+    linkLabel: 'View Site',
+    secondaryLink: 'https://github.com/heckerdj/recipes',
+    secondaryLinkLabel: 'GitHub',
     status: 'Live'
   },
   {
@@ -54,11 +66,11 @@ const Projects: React.FC = () => {
               </div>
               <div className="project-links">
                 <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  {project.secondaryLink ? 'MakerWorld' : 'View Project'}
+                  {project.linkLabel ?? (project.secondaryLink ? 'MakerWorld' : 'View Project')}
                 </a>
                 {project.secondaryLink && (
                   <a href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
-                    Printables
+                    {project.secondaryLinkLabel ?? 'Printables'}
                   </a>
                 )}
                 <span className="project-status">{project.status}</span>
