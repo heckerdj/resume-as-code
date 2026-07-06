@@ -21,9 +21,9 @@ const projects: Project[] = [
     status: 'Live'
   },
   {
-    title: 'Family Recipe Box',
-    description: 'The family recipe box, digitized. A fully static, backend-free site on GitHub Pages: photos of handwritten cards are transcribed with Claude vision, compiled from markdown into JSON, and published with ingredient, time, effort, and cuisine search alongside scans of the original cards.',
-    technologies: ['JavaScript', 'Node.js', 'GitHub Pages', 'PWA'],
+    title: 'Family Recipe Site',
+    description: 'The family recipe box, digitized. A fully static, backend-free site on GitHub Pages: photos of recipe cards are transcribed with Claude vision, compiled from markdown into JSON, and published with ingredients, time, effort, and cuisine search alongside scans of the original cards.',
+    technologies: ['JavaScript', 'Node.js', 'GitHub Pages' ],
     link: 'https://danhecker.com/recipes/',
     linkLabel: 'View Site',
     secondaryLink: 'https://github.com/heckerdj/recipes',
