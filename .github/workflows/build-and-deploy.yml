@@ -3,6 +3,11 @@ name: Build, Test, and Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+  # Fired by the heckerdj/recipes repo when new recipes are published,
+  # so danhecker.com/recipes stays in sync without a resume change.
+  repository_dispatch:
+    types: [recipes-updated]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -41,7 +46,20 @@ jobs:
         
       - name: Build React app
         run: pnpm run build
-        
+
+      # Serve the family recipe site at danhecker.com/recipes.
+      # continue-on-error: a recipes hiccup must never block a resume deploy
+      # (worst case /recipes is briefly stale or missing, the resume is fine).
+      - name: Add family recipe site at /recipes
+        continue-on-error: true
+        run: |
+          git clone --depth 1 https://github.com/heckerdj/recipes.git /tmp/recipes-site
+          mkdir -p dist/recipes
+          rsync -a /tmp/recipes-site/ dist/recipes/ \
+            --exclude .git --exclude node_modules --exclude source --exclude scripts \
+            --exclude package.json --exclude package-lock.json \
+            --exclude README.md --exclude .gitignore
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
