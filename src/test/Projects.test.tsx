@@ -20,6 +20,21 @@ describe('Projects', () => {
     expect(screen.getByText(/Deployed discord bots in a personally managed server/)).toBeInTheDocument()
   })
 
+  it('renders Family Recipe Box project', () => {
+    render(<Projects />)
+    expect(screen.getByRole('heading', { name: 'Family Recipe Box' })).toBeInTheDocument()
+    expect(screen.getByText(/The family recipe box, digitized/)).toBeInTheDocument()
+  })
+
+  it('renders Family Recipe Box project with both site and GitHub links', () => {
+    render(<Projects />)
+    const siteLink = screen.getByText('View Site')
+    const gitHubLink = screen.getByText('GitHub')
+
+    expect(siteLink).toHaveAttribute('href', 'https://danhecker.com/recipes/')
+    expect(gitHubLink).toHaveAttribute('href', 'https://github.com/heckerdj/recipes')
+  })
+
   it('renders 3D Printing project', () => {
     render(<Projects />)
     expect(screen.getByRole('heading', { name: '3D Printing' })).toBeInTheDocument()
@@ -40,12 +55,14 @@ describe('Projects', () => {
     const viewLinks = screen.getAllByText('View Project')
     const makerWorldLink = screen.getByText('MakerWorld')
     const printablesLink = screen.getByText('Printables')
-    
+    const siteLink = screen.getByText('View Site')
+    const gitHubLink = screen.getByText('GitHub')
+
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
-    
+
     // Check all links have correct attributes
-    const allLinks = [...viewLinks, makerWorldLink, printablesLink]
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink, siteLink, gitHubLink]
     allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
