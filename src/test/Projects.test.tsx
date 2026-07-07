@@ -20,9 +20,9 @@ describe('Projects', () => {
     expect(screen.getByText(/Deployed discord bots in a personally managed server/)).toBeInTheDocument()
   })
 
-  it('renders Family Recipe Box project', () => {
+  it('renders Family Recipe Site project', () => {
     render(<Projects />)
-    expect(screen.getByRole('heading', { name: 'Family Recipe Box' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Family Recipe Site' })).toBeInTheDocument()
     expect(screen.getByText(/The family recipe box, digitized/)).toBeInTheDocument()
   })
 
