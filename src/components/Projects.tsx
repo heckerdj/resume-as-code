@@ -22,12 +22,10 @@ const projects: Project[] = [
   },
   {
     title: 'Family Recipe Site',
-    description: 'The family recipe box, digitized. A fully static, backend-free site on GitHub Pages: photos of recipe cards are transcribed with Claude vision, compiled from markdown into JSON, and published with ingredients, time, effort, and cuisine search alongside scans of the original cards.',
-    technologies: ['JavaScript', 'Node.js', 'GitHub Pages' ],
-    link: 'https://danhecker.com/recipes/',
-    linkLabel: 'View Site',
-    secondaryLink: 'https://github.com/heckerdj/recipes',
-    secondaryLinkLabel: 'GitHub',
+    description: 'The family recipe box, digitized into a private multi-user app. Photos of recipe cards are transcribed with Claude vision through an automated ingestion pipeline, then served as a static site on Cloudflare Pages behind Cloudflare Access (email OTP for family members), with per-user likes and photo uploads powered by Workers, D1, and R2 — all on free tiers.',
+    technologies: ['JavaScript', 'Node.js', 'Cloudflare Pages', 'Cloudflare Workers', 'D1', 'R2', 'Claude API'],
+    link: 'https://recipes.4craftybrothers.com/',
+    linkLabel: 'Site (family sign-in)',
     status: 'Live'
   },
   {

@@ -26,13 +26,11 @@ describe('Projects', () => {
     expect(screen.getByText(/The family recipe box, digitized/)).toBeInTheDocument()
   })
 
-  it('renders Family Recipe Box project with both site and GitHub links', () => {
+  it('renders Family Recipe Site link to the gated family domain', () => {
     render(<Projects />)
-    const siteLink = screen.getByText('View Site')
-    const gitHubLink = screen.getByText('GitHub')
+    const siteLink = screen.getByText('Site (family sign-in)')
 
-    expect(siteLink).toHaveAttribute('href', 'https://danhecker.com/recipes/')
-    expect(gitHubLink).toHaveAttribute('href', 'https://github.com/heckerdj/recipes')
+    expect(siteLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
   it('renders 3D Printing project', () => {
@@ -55,14 +53,13 @@ describe('Projects', () => {
     const viewLinks = screen.getAllByText('View Project')
     const makerWorldLink = screen.getByText('MakerWorld')
     const printablesLink = screen.getByText('Printables')
-    const siteLink = screen.getByText('View Site')
-    const gitHubLink = screen.getByText('GitHub')
+    const siteLink = screen.getByText('Site (family sign-in)')
 
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
 
     // Check all links have correct attributes
-    const allLinks = [...viewLinks, makerWorldLink, printablesLink, siteLink, gitHubLink]
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink, siteLink]
     allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
