@@ -15,41 +15,12 @@
     if (dark) document.documentElement.classList.add('dark-mode');
   })();
 </script>
+<!-- Shared design tokens (single source of truth, also used by the resume app) -->
+<link rel="stylesheet" href="/theme.css">
 <style>
-  /* Design tokens mirror src/App.css so this page matches the resume site. */
-  :root {
-    --color-primary-light: #ba9ffa;
-    --color-primary: #8e66ea;
-    --color-primary-dark: #442761;
-    --color-accent: #8e66ea;
-    --color-text-primary: #2c3e50;
-    --color-text-secondary: #555;
-    --color-text-muted: #7f8c8d;
-    --color-bg-body: #f8f9fa;
-    --color-bg-section: #ffffff;
-    --color-border-light: #ecf0f1;
-    --color-border-muted: #f1f3f4;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,.1);
-    --shadow-md: 0 5px 15px rgba(0,0,0,.15);
-    --radius-md: 10px;
-    --radius-lg: 15px;
-    --radius-pill: 30px;
-    --code-bg: #2c2c33;
-    --code-text: #e9e3f5;
-  }
-  html.dark-mode {
-    --color-text-primary: #e4e4e7;
-    --color-text-secondary: #a1a1aa;
-    --color-text-muted: #71717a;
-    --color-bg-body: #18181b;
-    --color-bg-section: #27272a;
-    --color-border-light: #3f3f46;
-    --color-border-muted: #52525b;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,.3);
-    --shadow-md: 0 5px 15px rgba(0,0,0,.4);
-    --code-bg: #131316;
-    --code-text: #e9e3f5;
-  }
+  /* Page-only tokens (not part of the shared design system). */
+  :root { --code-bg: #2c2c33; --code-text: #e9e3f5; }
+  html.dark-mode { --code-bg: #131316; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -220,7 +191,7 @@ family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, pro
   and approved by me. The repo is private (it contains family content); I'm happy to walk through the code
   in conversation.</p>
 
-  <p class="foot"><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (family sign-in — you'll
+  <p class="foot"><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (access restricted — you'll
   meet the Access wall, which is the feature) · <a href="/">Back to danhecker.com</a></p>
 </div>
 

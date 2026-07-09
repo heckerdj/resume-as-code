@@ -26,12 +26,12 @@ describe('Projects', () => {
     expect(screen.getByText(/Private multi-user recipe app/)).toBeInTheDocument()
   })
 
-  it('renders Family Recipe App case study and gated live links', () => {
+  it('renders Family Recipe App details and gated live links', () => {
     render(<Projects />)
-    const caseStudyLink = screen.getByText('Case study')
-    const liveLink = screen.getByText('Live app (family sign-in)')
+    const detailsLink = screen.getByText('More Details')
+    const liveLink = screen.getByText('Live app (access restricted)')
 
-    expect(caseStudyLink).toHaveAttribute('href', '/case-studies/recipes.html')
+    expect(detailsLink).toHaveAttribute('href', '/case-studies/recipes.html')
     expect(liveLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
@@ -55,14 +55,14 @@ describe('Projects', () => {
     const viewLinks = screen.getAllByText('View Project')
     const makerWorldLink = screen.getByText('MakerWorld')
     const printablesLink = screen.getByText('Printables')
-    const caseStudyLink = screen.getByText('Case study')
-    const liveLink = screen.getByText('Live app (family sign-in)')
+    const detailsLink = screen.getByText('More Details')
+    const liveLink = screen.getByText('Live app (access restricted)')
 
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
 
     // Check all links have correct attributes
-    const allLinks = [...viewLinks, makerWorldLink, printablesLink, caseStudyLink, liveLink]
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink, detailsLink, liveLink]
     allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
