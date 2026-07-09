@@ -5,37 +5,139 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case study — Family Recipe App | Dan Hecker</title>
 <meta name="description" content="A private, multi-user family recipe app on Cloudflare's free tier: Pages, Access, D1, R2, and AI photo transcription via the Claude API.">
+<script>
+  // Match the resume site: honor the saved theme (same localStorage key), else the OS
+  // preference. Applied before paint to avoid a flash of the wrong theme.
+  (function () {
+    var saved = localStorage.getItem('darkMode');
+    var dark = saved !== null ? saved === 'true'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (dark) document.documentElement.classList.add('dark-mode');
+  })();
+</script>
 <style>
-  :root { --ink:#2a2622; --soft:#6b625a; --accent:#8c3b2e; --gold:#c8963e; --paper:#fdf8f0; --line:#e8ddd0; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background: var(--paper); color: var(--ink); line-height:1.65; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
-  a { color: var(--accent); }
-  h1 { font-size: 2rem; color: var(--accent); margin: 6px 0 2px; }
-  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; color: var(--soft); }
-  .lede { font-size: 1.12rem; color: var(--soft); margin-top: 10px; }
-  h2 { color: var(--accent); margin-top: 44px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
-  .pills { display:flex; flex-wrap:wrap; gap:8px; margin: 18px 0 6px; }
-  .pill { border:1px solid var(--line); background:#fff; border-radius:999px; padding: 4px 13px; font-size:.85rem; }
-  .shots { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin: 22px 0; }
-  .shots figure { margin:0; }
-  .shots img { width:100%; border-radius: 14px; border:1px solid var(--line); box-shadow: 0 6px 18px rgba(42,38,34,.12); }
-  .shots figcaption { font-size:.8rem; color: var(--soft); text-align:center; margin-top:6px; font-style: italic; }
+  /* Design tokens mirror src/App.css so this page matches the resume site. */
+  :root {
+    --color-primary-light: #ba9ffa;
+    --color-primary: #8e66ea;
+    --color-primary-dark: #442761;
+    --color-accent: #8e66ea;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #555;
+    --color-text-muted: #7f8c8d;
+    --color-bg-body: #f8f9fa;
+    --color-bg-section: #ffffff;
+    --color-border-light: #ecf0f1;
+    --color-border-muted: #f1f3f4;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,.1);
+    --shadow-md: 0 5px 15px rgba(0,0,0,.15);
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    --radius-pill: 30px;
+    --code-bg: #2c2c33;
+    --code-text: #e9e3f5;
+  }
+  html.dark-mode {
+    --color-text-primary: #e4e4e7;
+    --color-text-secondary: #a1a1aa;
+    --color-text-muted: #71717a;
+    --color-bg-body: #18181b;
+    --color-bg-section: #27272a;
+    --color-border-light: #3f3f46;
+    --color-border-muted: #52525b;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,.3);
+    --shadow-md: 0 5px 15px rgba(0,0,0,.4);
+    --code-bg: #131316;
+    --code-text: #e9e3f5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.65;
+    color: var(--color-text-primary);
+    background: var(--color-bg-body);
+    transition: background .3s ease, color .3s ease;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 80px; }
+  a { color: var(--color-primary); text-decoration: none; font-weight: 500; }
+  a:hover { text-decoration: underline; }
+
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .back { font-size: .9rem; }
+
+  /* Theme toggle — mirrors the resume's iOS-style switch */
+  .toggle { position: relative; width: 52px; height: 30px; flex: none; }
+  .toggle input { opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .toggle .track {
+    position: absolute; inset: 0; border-radius: 999px;
+    background: #E9E9EA; transition: background .3s ease; pointer-events: none;
+  }
+  html.dark-mode .toggle .track { background: #39393D; }
+  .toggle .thumb {
+    position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .3s ease;
+    display: grid; place-items: center; font-size: 13px; pointer-events: none;
+  }
+  html.dark-mode .toggle .thumb { transform: translateX(22px); }
+
+  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; color: var(--color-text-muted); }
+  h1 { font-size: 2.1rem; color: var(--color-primary); margin: 6px 0 4px; line-height: 1.15; }
+  .lede { font-size: 1.12rem; color: var(--color-text-secondary); margin-top: 10px; }
+  h2 { color: var(--color-text-primary); margin-top: 44px; padding-bottom: 8px;
+       border-bottom: 3px solid var(--color-primary); display: inline-block; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 6px; }
+  .pill {
+    border: 1px solid var(--color-border-light); background: var(--color-bg-section);
+    color: var(--color-text-secondary); border-radius: var(--radius-pill);
+    padding: 5px 14px; font-size: .82rem;
+  }
+
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 22px 0; }
+  .shots figure { margin: 0; }
+  .shots img {
+    width: 100%; border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light); box-shadow: var(--shadow-md);
+  }
+  .shots figcaption { font-size: .8rem; color: var(--color-text-muted); text-align: center; margin-top: 6px; }
   .wide { grid-column: 1 / -1; }
-  pre.arch { background:#2a2622; color:#f3e9dc; border-radius:14px; padding:18px 20px; overflow-x:auto; font-size:.78rem; line-height:1.5; }
-  .fact { display:grid; grid-template-columns: 170px 1fr; gap: 6px 18px; margin: 16px 0; font-size:.95rem; }
-  .fact dt { color: var(--soft); }
-  .fact dd { margin:0; }
+
+  pre.arch {
+    background: var(--code-bg); color: var(--code-text); border-radius: var(--radius-lg);
+    padding: 18px 20px; overflow-x: auto; font-size: .78rem; line-height: 1.5;
+    font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  }
+
+  .fact { display: grid; grid-template-columns: 180px 1fr; gap: 8px 20px; margin: 18px 0; font-size: .96rem; }
+  .fact dt { color: var(--color-primary); font-weight: 600; }
+  .fact dd { margin: 0; color: var(--color-text-secondary); }
+
   ul { padding-left: 22px; }
-  li { margin: 7px 0; }
-  .note { background:#fff; border:1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 10px; padding: 12px 16px; font-size:.92rem; }
-  .back { font-size:.9rem; }
-  @media (max-width: 560px) { .fact { grid-template-columns: 1fr; gap: 0 0; } .fact dt { margin-top: 8px; } }
+  li { margin: 8px 0; color: var(--color-text-secondary); }
+  li strong { color: var(--color-text-primary); }
+  code { background: var(--color-border-muted); padding: 1px 6px; border-radius: 5px; font-size: .88em; }
+
+  .note {
+    background: var(--color-bg-section); border: 1px solid var(--color-border-light);
+    border-left: 4px solid var(--color-primary); border-radius: var(--radius-md);
+    padding: 13px 16px; font-size: .92rem; color: var(--color-text-secondary); box-shadow: var(--shadow-sm);
+  }
+  .foot { margin-top: 40px; font-size: .95rem; }
+  @media (max-width: 560px) { .fact { grid-template-columns: 1fr; gap: 0; } .fact dt { margin-top: 10px; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p class="back"><a href="/">← danhecker.com</a></p>
+  <div class="topbar">
+    <span class="back"><a href="/">← danhecker.com</a></span>
+    <label class="toggle" title="Toggle light / dark">
+      <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="track"></span>
+      <span class="thumb" id="theme-thumb">🌙</span>
+    </label>
+  </div>
+
   <p class="kicker">Case study · personal project · 2026</p>
   <h1>The Family Recipe App</h1>
   <p class="lede">Dozens of double-sided recipe cards in a shoebox became a private, live, multi-user
@@ -89,13 +191,13 @@ family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, pro
 
   <h2>The evolution</h2>
   <ul>
-    <li><strong>v1 — static & scanned:</strong> photos of each card were batch-transcribed by an AI pipeline
+    <li><strong>v1 — static &amp; scanned:</strong> photos of each card were batch-transcribed by an AI pipeline
     (HEIC conversion, EXIF rotation, front/back pairing by capture order with vision verification) into
     markdown, compiled to JSON, hosted on GitHub Pages.</li>
-    <li><strong>v2 — private & multi-user:</strong> migrated the family domain's DNS to Cloudflare without
+    <li><strong>v2 — private &amp; multi-user:</strong> migrated the family domain's DNS to Cloudflare without
     disrupting its iCloud mail (MX/SPF/DKIM inventory-first), moved hosting to Cloudflare Pages, put
     Cloudflare Access with Google SSO in front, added per-user likes (D1) and in-app photo uploads (R2).</li>
-    <li><strong>v3 — live & editable:</strong> recipes moved from files into D1 as the single source of truth;
+    <li><strong>v3 — live &amp; editable:</strong> recipes moved from files into D1 as the single source of truth;
     added full in-app CRUD with review-first AI photo transcription; retired the batch pipeline entirely.</li>
   </ul>
 
@@ -118,8 +220,28 @@ family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, pro
   and approved by me. The repo is private (it contains family content); I'm happy to walk through the code
   in conversation.</p>
 
-  <p><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (family sign-in — you'll meet the
-  Access wall, which is the feature) · <a href="/">Back to danhecker.com</a></p>
+  <p class="foot"><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (family sign-in — you'll
+  meet the Access wall, which is the feature) · <a href="/">Back to danhecker.com</a></p>
 </div>
+
+<script>
+  // Keep the toggle in sync with the resume's shared localStorage key.
+  (function () {
+    var input = document.getElementById('theme-toggle');
+    var thumb = document.getElementById('theme-thumb');
+    function sync() {
+      var dark = document.documentElement.classList.contains('dark-mode');
+      input.checked = dark;
+      thumb.textContent = dark ? '☀️' : '🌙';
+    }
+    sync();
+    input.addEventListener('change', function () {
+      var dark = input.checked;
+      document.documentElement.classList.toggle('dark-mode', dark);
+      localStorage.setItem('darkMode', String(dark));
+      sync();
+    });
+  })();
+</script>
 </body>
 </html>
