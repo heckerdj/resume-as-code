@@ -21,11 +21,13 @@ const projects: Project[] = [
     status: 'Live'
   },
   {
-    title: 'Family Recipe Site',
-    description: 'The family recipe box, digitized into a private multi-user app. Photos of recipe cards are transcribed with Claude vision through an automated ingestion pipeline, then served as a static site on Cloudflare Pages behind Cloudflare Access (email OTP for family members), with per-user likes and photo uploads powered by Workers, D1, and R2 — all on free tiers.',
-    technologies: ['JavaScript', 'Node.js', 'Cloudflare Pages', 'Cloudflare Workers', 'D1', 'R2', 'Claude API'],
-    link: 'https://recipes.4craftybrothers.com/',
-    linkLabel: 'Site (family sign-in)',
+    title: 'Family Recipe App',
+    description: 'Private multi-user recipe app on Cloudflare\'s free tier: a PWA shell on Pages behind Cloudflare Access (Google one-tap, email allow-list), recipes served live from D1 through a Pages Function with full CRUD, versioned edits, and soft-delete; photos in R2; and on-demand AI transcription (Claude vision) that turns photos of handwritten recipe cards into structured, review-first drafts. Access JWTs validated per request; ~1¢ per photo scan with a daily cost cap; $0/month infrastructure.',
+    technologies: ['Cloudflare Pages', 'Cloudflare Access', 'Pages Functions', 'D1', 'R2', 'Claude API', 'JavaScript'],
+    link: '/case-studies/recipes.html',
+    linkLabel: 'More Details',
+    secondaryLink: 'https://recipes.4craftybrothers.com/',
+    secondaryLinkLabel: 'Live app (access restricted)',
     status: 'Live'
   },
   {

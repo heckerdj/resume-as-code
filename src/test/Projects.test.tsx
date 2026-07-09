@@ -20,17 +20,19 @@ describe('Projects', () => {
     expect(screen.getByText(/Deployed discord bots in a personally managed server/)).toBeInTheDocument()
   })
 
-  it('renders Family Recipe Site project', () => {
+  it('renders Family Recipe App project', () => {
     render(<Projects />)
-    expect(screen.getByRole('heading', { name: 'Family Recipe Site' })).toBeInTheDocument()
-    expect(screen.getByText(/The family recipe box, digitized/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Family Recipe App' })).toBeInTheDocument()
+    expect(screen.getByText(/Private multi-user recipe app/)).toBeInTheDocument()
   })
 
-  it('renders Family Recipe Site link to the gated family domain', () => {
+  it('renders Family Recipe App details and gated live links', () => {
     render(<Projects />)
-    const siteLink = screen.getByText('Site (family sign-in)')
+    const detailsLink = screen.getByText('More Details')
+    const liveLink = screen.getByText('Live app (access restricted)')
 
-    expect(siteLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
+    expect(detailsLink).toHaveAttribute('href', '/case-studies/recipes.html')
+    expect(liveLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
   it('renders 3D Printing project', () => {
@@ -53,13 +55,14 @@ describe('Projects', () => {
     const viewLinks = screen.getAllByText('View Project')
     const makerWorldLink = screen.getByText('MakerWorld')
     const printablesLink = screen.getByText('Printables')
-    const siteLink = screen.getByText('Site (family sign-in)')
+    const detailsLink = screen.getByText('More Details')
+    const liveLink = screen.getByText('Live app (access restricted)')
 
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
 
     // Check all links have correct attributes
-    const allLinks = [...viewLinks, makerWorldLink, printablesLink, siteLink]
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink, detailsLink, liveLink]
     allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
