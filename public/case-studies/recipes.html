@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study — Family Recipe App | Dan Hecker</title>
+<meta name="description" content="A private, multi-user family recipe app on Cloudflare's free tier: Pages, Access, D1, R2, and AI photo transcription via the Claude API.">
+<style>
+  :root { --ink:#2a2622; --soft:#6b625a; --accent:#8c3b2e; --gold:#c8963e; --paper:#fdf8f0; --line:#e8ddd0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background: var(--paper); color: var(--ink); line-height:1.65; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  a { color: var(--accent); }
+  h1 { font-size: 2rem; color: var(--accent); margin: 6px 0 2px; }
+  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; color: var(--soft); }
+  .lede { font-size: 1.12rem; color: var(--soft); margin-top: 10px; }
+  h2 { color: var(--accent); margin-top: 44px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+  .pills { display:flex; flex-wrap:wrap; gap:8px; margin: 18px 0 6px; }
+  .pill { border:1px solid var(--line); background:#fff; border-radius:999px; padding: 4px 13px; font-size:.85rem; }
+  .shots { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin: 22px 0; }
+  .shots figure { margin:0; }
+  .shots img { width:100%; border-radius: 14px; border:1px solid var(--line); box-shadow: 0 6px 18px rgba(42,38,34,.12); }
+  .shots figcaption { font-size:.8rem; color: var(--soft); text-align:center; margin-top:6px; font-style: italic; }
+  .wide { grid-column: 1 / -1; }
+  pre.arch { background:#2a2622; color:#f3e9dc; border-radius:14px; padding:18px 20px; overflow-x:auto; font-size:.78rem; line-height:1.5; }
+  .fact { display:grid; grid-template-columns: 170px 1fr; gap: 6px 18px; margin: 16px 0; font-size:.95rem; }
+  .fact dt { color: var(--soft); }
+  .fact dd { margin:0; }
+  ul { padding-left: 22px; }
+  li { margin: 7px 0; }
+  .note { background:#fff; border:1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 10px; padding: 12px 16px; font-size:.92rem; }
+  .back { font-size:.9rem; }
+  @media (max-width: 560px) { .fact { grid-template-columns: 1fr; gap: 0 0; } .fact dt { margin-top: 8px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="/">← danhecker.com</a></p>
+  <p class="kicker">Case study · personal project · 2026</p>
+  <h1>The Family Recipe App</h1>
+  <p class="lede">Dozens of double-sided recipe cards in a shoebox became a private, live, multi-user
+  web app my family uses from their phones — running entirely on free-tier infrastructure, with
+  AI turning a photo of a handwritten card into a structured, editable recipe in seconds.</p>
+
+  <div class="pills">
+    <span class="pill">Cloudflare Pages</span><span class="pill">Cloudflare Access</span>
+    <span class="pill">Pages Functions</span><span class="pill">D1 (SQLite)</span>
+    <span class="pill">R2 object storage</span><span class="pill">Claude API (vision)</span>
+    <span class="pill">Vanilla JS PWA</span><span class="pill">$0/mo infra</span>
+  </div>
+
+  <div class="shots">
+    <figure><img src="img/book-mobile.png" alt="The recipe book on a phone: searchable cards with filters"><figcaption>The book: search, time slider, cuisine / liked-by / added-by filters</figcaption></figure>
+    <figure><img src="img/detail-mobile.png" alt="A recipe detail page with tap-to-check ingredients"><figcaption>Recipe view: tap-to-check ingredients, attribution, likes</figcaption></figure>
+    <figure><img src="img/chooser-mobile.png" alt="Add-recipe chooser: from a photo or type it in"><figcaption>Two ways in: AI photo scan or a guided form</figcaption></figure>
+    <figure class="wide"><img src="img/editor-desktop.png" alt="The recipe editor with reorderable ingredient and step rows"><figcaption>The editor: full CRUD with reorderable rows, photos, and undo</figcaption></figure>
+  </div>
+  <p class="note">Screenshots use mock data — the real app is private to my family, which is rather the point.
+  The live app sits behind Cloudflare Access: family members sign in with one tap via Google against an
+  explicit email allow-list.</p>
+
+  <h2>Architecture</h2>
+  <pre class="arch">
+family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, proxied)
+                    │  Cloudflare Access — Google SSO, email allow-list, JWT per request
+                    ├─ static PWA shell        ← Cloudflare Pages (vanilla JS, no framework)
+                    └─ /api/*                  ← Pages Function (one file)
+                          ├─ recipes CRUD       → D1  · versioned edits · soft delete
+                          ├─ likes              → D1  · per-user, drives "liked-by" filters
+                          ├─ photo store/serve  → R2  · gated, private
+                          └─ /api/transcribe    → Claude Haiku vision · photo → structured draft
+  </pre>
+
+  <dl class="fact">
+    <dt>Auth</dt><dd>Cloudflare Access in front of everything; the API validates the Access JWT signature
+    against team public keys on every request — identity is cryptographic, never a trusted header.</dd>
+    <dt>Data</dt><dd>Recipes live in D1 (SQLite at the edge). Every edit snapshots the prior version
+    (bounded history → "undo last edit"); deletes are soft with instant undo and a restorable trash.</dd>
+    <dt>AI ingestion</dt><dd>1–2 photos of a card (single- or double-sided) go to Claude Haiku vision with a
+    strict transcription prompt: never invent unreadable text, mark estimated times, infer cuisine/effort.
+    The draft opens in the same editor for human review before anything saves.</dd>
+    <dt>Cost engineering</dt><dd>Everything rides free tiers (Pages, Access ≤50 users, D1, R2). The only
+    metered call is transcription: ~1¢ per recipe, with a family-wide daily cap enforced in D1 so a bug
+    can never run up a bill.</dd>
+    <dt>Attribution</dt><dd>Every recipe permanently shows who added it; "edited by" appears only after
+    someone changes it. Filters: ingredient search, total-time slider, cuisine, liked-by (AND across
+    selected family), added-by.</dd>
+  </dl>
+
+  <h2>The evolution</h2>
+  <ul>
+    <li><strong>v1 — static & scanned:</strong> photos of each card were batch-transcribed by an AI pipeline
+    (HEIC conversion, EXIF rotation, front/back pairing by capture order with vision verification) into
+    markdown, compiled to JSON, hosted on GitHub Pages.</li>
+    <li><strong>v2 — private & multi-user:</strong> migrated the family domain's DNS to Cloudflare without
+    disrupting its iCloud mail (MX/SPF/DKIM inventory-first), moved hosting to Cloudflare Pages, put
+    Cloudflare Access with Google SSO in front, added per-user likes (D1) and in-app photo uploads (R2).</li>
+    <li><strong>v3 — live & editable:</strong> recipes moved from files into D1 as the single source of truth;
+    added full in-app CRUD with review-first AI photo transcription; retired the batch pipeline entirely.</li>
+  </ul>
+
+  <h2>Problems worth remembering</h2>
+  <ul>
+    <li><strong>Access scoping vs. <code>fetch()</code>:</strong> path-scoped Access apps break same-page API
+    calls — the token mint is a cross-origin redirect fetch can't follow. One whole-host app with a single
+    session was the fix.</li>
+    <li><strong>Login UX archaeology:</strong> Cloudflare strips <code>login_hint</code> for its email-OTP
+    method but honors it for Google — discovered by tracing redirect chains; it reshaped the sign-in design
+    from "type a code" to true one-tap.</li>
+    <li><strong>iPhone photo reality:</strong> HEIC decoding drops EXIF orientation, so every scanned card
+    arrived sideways; orientation had to be re-applied manually in the pipeline.</li>
+    <li><strong>Free ≠ configured:</strong> R2 and Zero Trust each need one-time manual activation that no
+    API token can perform — worth knowing before scripting "fully automated" provisioning.</li>
+  </ul>
+
+  <p class="note">Built collaboratively with Claude (Anthropic's AI assistant) doing the implementation under
+  my direction — architecture decisions, security trade-offs, and every access-control change were reviewed
+  and approved by me. The repo is private (it contains family content); I'm happy to walk through the code
+  in conversation.</p>
+
+  <p><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (family sign-in — you'll meet the
+  Access wall, which is the feature) · <a href="/">Back to danhecker.com</a></p>
+</div>
+</body>
+</html>
