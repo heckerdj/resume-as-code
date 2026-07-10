@@ -24,7 +24,7 @@ const projects: Project[] = [
     title: 'Family Recipe App',
     description: 'Private multi-user recipe app on Cloudflare\'s free tier: a PWA shell on Pages behind Cloudflare Access (Google one-tap, email allow-list), recipes served live from D1 through a Pages Function with full CRUD, versioned edits, and soft-delete; photos in R2; and on-demand AI transcription (Claude vision) that turns photos of handwritten recipe cards into structured, review-first drafts. Access JWTs validated per request; ~1¢ per photo scan with a daily cost cap; $0/month infrastructure.',
     technologies: ['Cloudflare Pages', 'Cloudflare Access', 'Pages Functions', 'D1', 'R2', 'Claude API', 'JavaScript'],
-    link: '/case-studies/recipes.html',
+    link: '/family-recipes/',
     linkLabel: 'More Details',
     secondaryLink: 'https://recipes.4craftybrothers.com/',
     secondaryLinkLabel: 'Live app (access restricted)',

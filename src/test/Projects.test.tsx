@@ -31,7 +31,7 @@ describe('Projects', () => {
     const detailsLink = screen.getByText('More Details')
     const liveLink = screen.getByText('Live app (access restricted)')
 
-    expect(detailsLink).toHaveAttribute('href', '/case-studies/recipes.html')
+    expect(detailsLink).toHaveAttribute('href', '/family-recipes/')
     expect(liveLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
