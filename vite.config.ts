@@ -13,11 +13,11 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     rollupOptions: {
-      // Multi-page build: the resume SPA plus the static case-study pages, all
+      // Multi-page build: the resume SPA plus the static family-recipes pages, all
       // processed the same way (minified, hashed assets, base-path aware).
       input: {
         main: resolve(__dirname, 'index.html'),
-        'case-study-recipes': resolve(__dirname, 'case-studies/recipes.html')
+        'family-recipes': resolve(__dirname, 'public/family-recipes/recipes.html')
       }
     }
   },

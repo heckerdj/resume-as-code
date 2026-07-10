@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case study — Family Recipe App | Dan Hecker</title>
+<title>Hobby Project - Family Recipe App | Dan Hecker</title>
 <meta name="description" content="A private, multi-user family recipe app on Cloudflare's free tier: Pages, Access, D1, R2, and AI photo transcription via the Claude API.">
 <script>
   // Match the resume site: honor the saved theme (same localStorage key), else the OS
@@ -112,8 +112,8 @@
 
   <p class="kicker">Case study · personal project · 2026</p>
   <h1>The Family Recipe App</h1>
-  <p class="lede">Dozens of double-sided recipe cards in a shoebox became a private, live, multi-user
-  web app my family uses from their phones — running entirely on free-tier infrastructure, with
+  <p class="lede">Dozens of family recipes became a private, live, multi-user
+  web app my family, mostly used mobilly, running entirely on free-tier infrastructure, with
   AI turning a photo of a handwritten card into a structured, editable recipe in seconds.</p>
 
   <div class="pills">
@@ -129,14 +129,14 @@
     <figure><img src="img/chooser-mobile.png" alt="Add-recipe chooser: from a photo or type it in"><figcaption>Two ways in: AI photo scan or a guided form</figcaption></figure>
     <figure class="wide"><img src="img/editor-desktop.png" alt="The recipe editor with reorderable ingredient and step rows"><figcaption>The editor: full CRUD with reorderable rows, photos, and undo</figcaption></figure>
   </div>
-  <p class="note">Screenshots use mock data — the real app is private to my family, which is rather the point.
+  <p class="note">Screenshots use mock data, the real app is private to my family, which is the point.
   The live app sits behind Cloudflare Access: family members sign in with one tap via Google against an
   explicit email allow-list.</p>
 
   <h2>Architecture</h2>
   <pre class="arch">
 family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, proxied)
-                    │  Cloudflare Access — Google SSO, email allow-list, JWT per request
+                    │  Cloudflare Access via Google SSO, email allow-list, JWT per request
                     ├─ static PWA shell        ← Cloudflare Pages (vanilla JS, no framework)
                     └─ /api/*                  ← Pages Function (one file)
                           ├─ recipes CRUD       → D1  · versioned edits · soft delete
@@ -147,53 +147,21 @@ family phones ──▶ recipes.&lt;family-domain&gt;.com   (Cloudflare DNS, pro
 
   <dl class="fact">
     <dt>Auth</dt><dd>Cloudflare Access in front of everything; the API validates the Access JWT signature
-    against team public keys on every request — identity is cryptographic, never a trusted header.</dd>
-    <dt>Data</dt><dd>Recipes live in D1 (SQLite at the edge). Every edit snapshots the prior version
-    (bounded history → "undo last edit"); deletes are soft with instant undo and a restorable trash.</dd>
-    <dt>AI ingestion</dt><dd>1–2 photos of a card (single- or double-sided) go to Claude Haiku vision with a
+    against team public keys on every request, identity is cryptographic, never a trusted header.</dd>
+    <dt>Data</dt><dd>Recipes live in D1 (SQLite at the edge). Every edit snapshots the prior version which 
+      makes deletes soft with an "undo last edit" button.</dd>
+    <dt>AI ingestion</dt><dd>1–2 photos of a card (single or double-sided) go to Claude Haiku vision with a
     strict transcription prompt: never invent unreadable text, mark estimated times, infer cuisine/effort.
     The draft opens in the same editor for human review before anything saves.</dd>
     <dt>Cost engineering</dt><dd>Everything rides free tiers (Pages, Access ≤50 users, D1, R2). The only
     metered call is transcription: ~1¢ per recipe, with a family-wide daily cap enforced in D1 so a bug
     can never run up a bill.</dd>
     <dt>Attribution</dt><dd>Every recipe permanently shows who added it; "edited by" appears only after
-    someone changes it. Filters: ingredient search, total-time slider, cuisine, liked-by (AND across
-    selected family), added-by.</dd>
+    someone changes it. Filters: ingredient search, total-time slider, cuisine, liked-by, and added-by.</dd>
   </dl>
 
-  <h2>The evolution</h2>
-  <ul>
-    <li><strong>v1 — static &amp; scanned:</strong> photos of each card were batch-transcribed by an AI pipeline
-    (HEIC conversion, EXIF rotation, front/back pairing by capture order with vision verification) into
-    markdown, compiled to JSON, hosted on GitHub Pages.</li>
-    <li><strong>v2 — private &amp; multi-user:</strong> migrated the family domain's DNS to Cloudflare without
-    disrupting its iCloud mail (MX/SPF/DKIM inventory-first), moved hosting to Cloudflare Pages, put
-    Cloudflare Access with Google SSO in front, added per-user likes (D1) and in-app photo uploads (R2).</li>
-    <li><strong>v3 — live &amp; editable:</strong> recipes moved from files into D1 as the single source of truth;
-    added full in-app CRUD with review-first AI photo transcription; retired the batch pipeline entirely.</li>
-  </ul>
-
-  <h2>Problems worth remembering</h2>
-  <ul>
-    <li><strong>Access scoping vs. <code>fetch()</code>:</strong> path-scoped Access apps break same-page API
-    calls — the token mint is a cross-origin redirect fetch can't follow. One whole-host app with a single
-    session was the fix.</li>
-    <li><strong>Login UX archaeology:</strong> Cloudflare strips <code>login_hint</code> for its email-OTP
-    method but honors it for Google — discovered by tracing redirect chains; it reshaped the sign-in design
-    from "type a code" to true one-tap.</li>
-    <li><strong>iPhone photo reality:</strong> HEIC decoding drops EXIF orientation, so every scanned card
-    arrived sideways; orientation had to be re-applied manually in the pipeline.</li>
-    <li><strong>Free ≠ configured:</strong> R2 and Zero Trust each need one-time manual activation that no
-    API token can perform — worth knowing before scripting "fully automated" provisioning.</li>
-  </ul>
-
-  <p class="note">Built collaboratively with Claude (Anthropic's AI assistant) doing the implementation under
-  my direction — architecture decisions, security trade-offs, and every access-control change were reviewed
-  and approved by me. The repo is private (it contains family content); I'm happy to walk through the code
-  in conversation.</p>
-
-  <p class="foot"><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (access restricted — you'll
-  meet the Access wall, which is the feature) · <a href="/">Back to danhecker.com</a></p>
+  <p class="foot"><a href="https://recipes.4craftybrothers.com/">Visit the live app</a> (restricted access, you'll
+  meet the Access wall unless I have granted you access) · <a href="/">Back to danhecker.com</a></p>
 </div>
 
 <script>
