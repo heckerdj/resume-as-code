@@ -15,8 +15,9 @@
     if (dark) document.documentElement.classList.add('dark-mode');
   })();
 </script>
-<!-- Shared design tokens (single source of truth, also used by the resume app) -->
-<link rel="stylesheet" href="/theme.css">
+<!-- Shared design tokens (single source of truth, also imported by the resume app).
+     Relative path so Vite bundles it and rewrites it for any base path. -->
+<link rel="stylesheet" href="../src/theme.css">
 <style>
   /* Page-only tokens (not part of the shared design system). */
   :root { --code-bg: #2c2c33; --code-text: #e9e3f5; }

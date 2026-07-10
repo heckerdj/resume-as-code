@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -10,7 +11,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      // Multi-page build: the resume SPA plus the static case-study pages, all
+      // processed the same way (minified, hashed assets, base-path aware).
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        'case-study-recipes': resolve(__dirname, 'case-studies/recipes.html')
+      }
+    }
   },
   define: {
     // Pass REACT_APP_PR_PATH to the client-side code

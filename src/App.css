@@ -1,6 +1,6 @@
 /* Design tokens (colors, spacing, radii, shadows, light/dark palette) live in
-   the shared /public/theme.css, linked from index.html — so the resume and the
-   case-study pages stay in sync. Edit values there, not here. */
+   src/theme.css — imported by main.tsx for the app and linked by the
+   case-studies/*.html pages, so both stay in sync. Edit values there, not here. */
 
 /* Global Styles */
 *, *::before, *::after {
