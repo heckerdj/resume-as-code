@@ -1,8 +1,9 @@
 /* ============================================================================
    Shared design tokens — the ONE place colors, spacing, radii, shadows, and the
    light/dark palette live. Referenced by:
-     - the resume app  (index.html: <link href="/theme.css">, consumed by App.css)
-     - the case studies (public/case-studies/*.html: <link href="/theme.css">)
+     - the resume app        (src/main.tsx: import './theme.css')
+     - the project subpages  (family-recipes/index.html: <link href="../src/theme.css">)
+   Both are Vite build entries, so they share the same built theme-*.css bundle.
    Dark mode is a `.dark-mode` class on <html> (toggled + persisted in
    localStorage 'darkMode'). Change a value here and it updates everywhere.
    ========================================================================== */

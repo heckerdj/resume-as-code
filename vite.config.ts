@@ -17,7 +17,7 @@ export default defineConfig({
       // processed the same way (minified, hashed assets, base-path aware).
       input: {
         main: resolve(__dirname, 'index.html'),
-        'family-recipes': resolve(__dirname, 'public/family-recipes/recipes.html')
+        'family-recipes': resolve(__dirname, 'family-recipes/index.html')
       }
     }
   },
