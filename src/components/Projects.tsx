@@ -31,6 +31,16 @@ const projects: Project[] = [
     status: 'Live'
   },
   {
+    title: 'Cornered - Daily Puzzle Game',
+    description: 'A daily puzzle mobile game: one board a day, find four matching marks at the corners of a rectangle, and tilted rectangles count too. Difficulty ramps through the week from a Monday coffee puzzle to a Saturday gauntlet. Ships a pre-generated 10-year puzzle corpus that an independent validator re-solves with a different algorithm, with CI guarding the generator, app engine, and tap-target layout budget.',
+    technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
+    link: 'https://apps.apple.com/app/id6804104582',
+    linkLabel: 'App Store',
+    secondaryLink: 'https://play.google.com/store/apps/details?id=com.corneredgame.cornered',
+    secondaryLinkLabel: 'Google Play',
+    status: 'Hobby'
+  },
+  {
     title: '3D Printing',
     description: 'Exploring additive manufacturing through 3D printing. Started sharing designs on Printables and now primarily using MakerWorld to create and publish custom models.',
     technologies: ['3D Printing', 'CAD Design', 'Additive Manufacturing'],
