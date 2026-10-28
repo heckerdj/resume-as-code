@@ -35,6 +35,25 @@ describe('Projects', () => {
     expect(liveLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
+  it('renders Cornered project with App Store and Google Play links', () => {
+    render(<Projects />)
+    expect(screen.getByRole('heading', { name: 'Cornered - Daily Puzzle Game' })).toBeInTheDocument()
+    expect(screen.getByText(/A daily puzzle mobile game/)).toBeInTheDocument()
+
+    expect(screen.getByText('App Store')).toHaveAttribute('href', 'https://apps.apple.com/app/id6804104582')
+    expect(screen.getByText('Google Play')).toHaveAttribute(
+      'href',
+      'https://play.google.com/store/apps/details?id=com.corneredgame.cornered'
+    )
+  })
+
+  it('renders Cornered first with its logo', () => {
+    render(<Projects />)
+    const headings = screen.getAllByRole('heading', { level: 3 })
+    expect(headings[0]).toHaveTextContent('Cornered - Daily Puzzle Game')
+    expect(screen.getByAltText('Cornered logo')).toBeInTheDocument()
+  })
+
   it('renders 3D Printing project', () => {
     render(<Projects />)
     expect(screen.getByRole('heading', { name: '3D Printing' })).toBeInTheDocument()
@@ -57,12 +76,14 @@ describe('Projects', () => {
     const printablesLink = screen.getByText('Printables')
     const detailsLink = screen.getByText('More Details')
     const liveLink = screen.getByText('Live app (access restricted)')
+    const appStoreLink = screen.getByText('App Store')
+    const googlePlayLink = screen.getByText('Google Play')
 
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
 
     // Check all links have correct attributes
-    const allLinks = [...viewLinks, makerWorldLink, printablesLink, detailsLink, liveLink]
+    const allLinks = [...viewLinks, makerWorldLink, printablesLink, detailsLink, liveLink, appStoreLink, googlePlayLink]
     allLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
