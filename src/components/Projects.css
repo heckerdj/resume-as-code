@@ -49,6 +49,20 @@
   color: white;
 }
 
+.project-logo {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 56px;
+  height: 56px;
+  border-radius: 22%;
+  box-shadow: var(--shadow-md);
+}
+
+.project-card.has-logo h3 {
+  padding-right: 64px;
+}
+
 .project-description {
   line-height: 1.6;
   margin-bottom: var(--spacing-md);
@@ -109,6 +123,17 @@
   
   .project-card {
     padding: var(--spacing-md);
+  }
+
+  .project-logo {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 44px;
+    height: 44px;
+  }
+
+  .project-card.has-logo h3 {
+    padding-right: 48px;
   }
   
   .project-links {

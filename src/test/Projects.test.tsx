@@ -47,6 +47,13 @@ describe('Projects', () => {
     )
   })
 
+  it('renders Cornered first with its logo', () => {
+    render(<Projects />)
+    const headings = screen.getAllByRole('heading', { level: 3 })
+    expect(headings[0]).toHaveTextContent('Cornered - Daily Puzzle Game')
+    expect(screen.getByAltText('Cornered logo')).toBeInTheDocument()
+  })
+
   it('renders 3D Printing project', () => {
     render(<Projects />)
     expect(screen.getByRole('heading', { name: '3D Printing' })).toBeInTheDocument()

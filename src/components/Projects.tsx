@@ -1,5 +1,6 @@
 import React from 'react';
 import './Projects.css';
+import corneredIcon from '../assets/cornered-icon.svg';
 
 interface Project {
   title: string;
@@ -9,10 +10,22 @@ interface Project {
   linkLabel?: string;
   secondaryLink?: string;
   secondaryLinkLabel?: string;
+  logo?: string;
   status: string;
 }
 
 const projects: Project[] = [
+  {
+    title: 'Cornered - Daily Puzzle Game',
+    description: 'A daily puzzle mobile game: one board a day, find four matching marks at the corners of a rectangle, and tilted rectangles count too. Difficulty ramps through the week from a Monday coffee puzzle to a Saturday gauntlet. Ships a pre-generated 10-year puzzle corpus that an independent validator re-solves with a different algorithm, with CI guarding the generator, app engine, and tap-target layout budget.',
+    technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
+    link: 'https://apps.apple.com/app/id6804104582',
+    linkLabel: 'App Store',
+    secondaryLink: 'https://play.google.com/store/apps/details?id=com.corneredgame.cornered',
+    secondaryLinkLabel: 'Google Play',
+    logo: corneredIcon,
+    status: 'Hobby'
+  },
   {
     title: 'DanHecker.com - Resume as Code',
     description: 'Personal resume site built with React, TypeScript, and deployed via GitHub Pages with automated CI/CD pipeline. Showcases modern web development practices and DevOps integration.',
@@ -29,16 +42,6 @@ const projects: Project[] = [
     secondaryLink: 'https://recipes.4craftybrothers.com/',
     secondaryLinkLabel: 'Live app (access restricted)',
     status: 'Live'
-  },
-  {
-    title: 'Cornered - Daily Puzzle Game',
-    description: 'A daily puzzle mobile game: one board a day, find four matching marks at the corners of a rectangle, and tilted rectangles count too. Difficulty ramps through the week from a Monday coffee puzzle to a Saturday gauntlet. Ships a pre-generated 10-year puzzle corpus that an independent validator re-solves with a different algorithm, with CI guarding the generator, app engine, and tap-target layout budget.',
-    technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
-    link: 'https://apps.apple.com/app/id6804104582',
-    linkLabel: 'App Store',
-    secondaryLink: 'https://play.google.com/store/apps/details?id=com.corneredgame.cornered',
-    secondaryLinkLabel: 'Google Play',
-    status: 'Hobby'
   },
   {
     title: '3D Printing',
@@ -64,7 +67,10 @@ const Projects: React.FC = () => {
         <h2>Projects</h2>
         <div className="projects-grid">
           {projects.map((project) => (
-            <div key={project.title} className="project-card">
+            <div key={project.title} className={project.logo ? 'project-card has-logo' : 'project-card'}>
+              {project.logo && (
+                <img className="project-logo" src={project.logo} alt={`${project.title.split(' - ')[0]} logo`} />
+              )}
               <h3>{project.title}</h3>
               <p className="project-description">{project.description}</p>
               <div className="project-technologies">
