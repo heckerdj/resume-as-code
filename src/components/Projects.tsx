@@ -12,19 +12,30 @@ interface Project {
   secondaryLinkLabel?: string;
   logo?: string;
   status: string;
+  /** Featured projects get a full-width hero card above the grid. */
+  featured?: boolean;
+  tagline?: string;
+  highlights?: string[];
 }
 
 const projects: Project[] = [
   {
-    title: 'Cornered - Daily Puzzle Game',
-    description: 'A daily puzzle mobile game: one board a day, find four matching marks at the corners of a rectangle, and tilted rectangles count too. Difficulty ramps through the week from a Monday coffee puzzle to a Saturday gauntlet. Ships a pre-generated 10-year puzzle corpus that an independent validator re-solves with a different algorithm, with CI guarding the generator, app engine, and tap-target layout budget.',
+    title: 'Cornered',
+    tagline: 'A daily puzzle game for iPhone and Android',
+    description: 'One board a day. Find four matching marks at the corners of a rectangle, and tilted rectangles count too. Puzzles ramp from a Monday coffee break to a Saturday gauntlet.',
+    highlights: [
+      'Ten years of puzzles generated ahead of time, each one re-solved by an independent validator using a different algorithm',
+      'CI guards the puzzle generator, the game engine and the tap-target layout budget',
+      'Built with React Native and Expo, backed by Cloudflare Workers, infrastructure in Pulumi'
+    ],
     technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
     link: 'https://apps.apple.com/app/id6804104582',
     linkLabel: 'App Store',
     secondaryLink: 'https://play.google.com/store/apps/details?id=com.corneredgame.cornered',
     secondaryLinkLabel: 'Google Play',
     logo: corneredIcon,
-    status: 'Hobby'
+    status: 'Live on iOS and Android',
+    featured: true
   },
   {
     title: 'DanHecker.com - Resume as Code',
@@ -60,18 +71,67 @@ const projects: Project[] = [
   }
 ];
 
+const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => (
+  <article className="featured-project" aria-labelledby="featured-project-title">
+    <div className="featured-project-heading">
+      {project.logo && <img className="featured-project-logo" src={project.logo} alt={`${project.title} logo`} />}
+      <div>
+        <h3 id="featured-project-title">{project.title}</h3>
+        {project.tagline && <p className="featured-project-tagline">{project.tagline}</p>}
+      </div>
+      <span className="featured-project-status">
+        <span className="status-dot" aria-hidden="true"></span>
+        {project.status}
+      </span>
+    </div>
+    <p className="featured-project-description">{project.description}</p>
+    {project.highlights && (
+      <ul className="featured-project-highlights">
+        {project.highlights.map((highlight) => (
+          <li key={highlight}>{highlight}</li>
+        ))}
+      </ul>
+    )}
+    <div className="project-technologies">
+      {project.technologies.map((tech) => (
+        <span key={tech} className="tech-tag">
+          {tech}
+        </span>
+      ))}
+    </div>
+    <div className="store-links">
+      <a className="store-badge" href={project.link} target="_blank" rel="noopener noreferrer">
+        <span className="store-badge-small">Download on the</span>
+        <span className="store-badge-large">{project.linkLabel}</span>
+      </a>
+      {project.secondaryLink && (
+        <a className="store-badge" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
+          <span className="store-badge-small">Get it on</span>
+          <span className="store-badge-large">{project.secondaryLinkLabel}</span>
+        </a>
+      )}
+    </div>
+  </article>
+);
+
 const Projects: React.FC = () => {
+  const featured = projects.filter((project) => project.featured);
+  const others = projects.filter((project) => !project.featured);
+
   return (
     <section className="projects-section">
       <div className="container">
         <h2>Projects</h2>
+        {featured.map((project) => (
+          <FeaturedProject key={project.title} project={project} />
+        ))}
         <div className="projects-grid">
-          {projects.map((project) => (
-            <div key={project.title} className={project.logo ? 'project-card has-logo' : 'project-card'}>
-              {project.logo && (
-                <img className="project-logo" src={project.logo} alt={`${project.title.split(' - ')[0]} logo`} />
-              )}
-              <h3>{project.title}</h3>
+          {others.map((project) => (
+            <div key={project.title} className="project-card">
+              <div className="project-card-header">
+                <h3>{project.title}</h3>
+                <span className={`project-status status-${project.status.toLowerCase()}`}>{project.status}</span>
+              </div>
               <p className="project-description">{project.description}</p>
               <div className="project-technologies">
                 {project.technologies.map((tech) => (
@@ -89,7 +149,6 @@ const Projects: React.FC = () => {
                     {project.secondaryLinkLabel ?? 'Printables'}
                   </a>
                 )}
-                <span className="project-status">{project.status}</span>
               </div>
             </div>
           ))}

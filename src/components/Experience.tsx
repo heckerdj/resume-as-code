@@ -112,6 +112,33 @@ const Experience: React.FC = () => {
             </div>
           </div>
 
+          {/* Orgadata AG Experience Card */}
+          <div className={`employer-card border-${COMPANY_INFO.Orgadata.colorClass}`}>
+            <div className="employer-header">
+              {COMPANY_INFO.Orgadata.logo ? (
+                <img 
+                  src={COMPANY_INFO.Orgadata.logo} 
+                  alt={COMPANY_INFO.Orgadata.name}
+                  className="employer-logo"
+                />
+              ) : (
+                <h3 className="employer-name-fallback">{COMPANY_INFO.Orgadata.name}</h3>
+              )}
+              <p className="employer-duration">September 2017 - December 2017</p>
+              <p className="employer-location">Leer, Germany</p>
+            </div>
+            <div className="roles-container">
+              <div className="role">
+                <h4 className={`color-${COMPANY_INFO.Orgadata.colorClass}`}>Software Engineering Apprentice</h4>
+                <p className="role-duration">September 2017 - December 2017</p>
+                <ul>
+                  <li>International apprenticeship teaching C# programming fundamentals</li>
+                  <li>Taught month-long introduction to basic C# programming to German high school students</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           {/* UTC Aerospace Systems Experience Card */}
           <div className={`employer-card border-${COMPANY_INFO.UTC.colorClass}`}>
             <div className="employer-header">
@@ -135,33 +162,6 @@ const Experience: React.FC = () => {
                   <li>Developed front-end UI features for Black Hawk ground station using SVN version control</li>
                   <li>Redesigned middleware, Windows service, and SQL Server database architecture</li>
                   <li>Tested Pulse Ground Station (Silverlight application) using automated UI tests</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Orgadata AG Experience Card */}
-          <div className={`employer-card border-${COMPANY_INFO.Orgadata.colorClass}`}>
-            <div className="employer-header">
-              {COMPANY_INFO.Orgadata.logo ? (
-                <img 
-                  src={COMPANY_INFO.Orgadata.logo} 
-                  alt={COMPANY_INFO.Orgadata.name}
-                  className="employer-logo"
-                />
-              ) : (
-                <h3 className="employer-name-fallback">{COMPANY_INFO.Orgadata.name}</h3>
-              )}
-              <p className="employer-duration">September 2017 - December 2017</p>
-              <p className="employer-location">Leer, Germany</p>
-            </div>
-            <div className="roles-container">
-              <div className="role">
-                <h4 className={`color-${COMPANY_INFO.Orgadata.colorClass}`}>Software Engineering Apprentice</h4>
-                <p className="role-duration">September 2017 - December 2017</p>
-                <ul>
-                  <li>International apprenticeship teaching C# programming fundamentals</li>
-                  <li>Taught month-long introduction to basic C# programming to German high school students</li>
                 </ul>
               </div>
             </div>
