@@ -135,38 +135,6 @@
   transform: translateY(-2px);
 }
 
-/* Google Play: stand-in until the official badge artwork is added. */
-.store-badge {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0.25rem 1.1rem;
-  box-sizing: border-box;
-  border-radius: 12px;
-  background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: white;
-  text-decoration: none;
-  line-height: 1.15;
-  transition: transform var(--transition-fast);
-}
-
-.store-badge:hover,
-.store-badge:focus-visible {
-  transform: translateY(-2px);
-}
-
-.store-badge-small {
-  font-size: 0.7rem;
-  opacity: 0.85;
-}
-
-.store-badge-large {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
 /* ---------- Other projects (quieter cards) ---------- */
 
 .projects-grid {

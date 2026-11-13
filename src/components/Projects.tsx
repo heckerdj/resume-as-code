@@ -4,6 +4,7 @@ import corneredIcon from '../assets/cornered-icon.svg';
 import corneredMonday from '../assets/cornered-monday.webp';
 import corneredSunday from '../assets/cornered-sunday.webp';
 import appStoreBadge from '../assets/app-store-badge.png';
+import googlePlayBadge from '../assets/google-play-badge.png';
 
 interface Project {
   title: string;
@@ -113,9 +114,8 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => (
           <img src={appStoreBadge} alt={`Download on the ${project.linkLabel}`} height={48} />
         </a>
         {project.secondaryLink && (
-          <a className="store-badge" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
-            <span className="store-badge-small">Get it on</span>
-            <span className="store-badge-large">{project.secondaryLinkLabel}</span>
+          <a className="store-badge-image" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
+            <img src={googlePlayBadge} alt={`Get it on ${project.secondaryLinkLabel}`} height={48} />
           </a>
         )}
       </div>
