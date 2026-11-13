@@ -1,6 +1,9 @@
 import React from 'react';
 import './Projects.css';
 import corneredIcon from '../assets/cornered-icon.svg';
+import corneredMonday from '../assets/cornered-monday.webp';
+import corneredSunday from '../assets/cornered-sunday.webp';
+import appStoreBadge from '../assets/app-store-badge.png';
 
 interface Project {
   title: string;
@@ -16,17 +19,22 @@ interface Project {
   featured?: boolean;
   tagline?: string;
   highlights?: string[];
+  screenshots?: { src: string; alt: string }[];
 }
 
 const projects: Project[] = [
   {
     title: 'Cornered',
     tagline: 'A daily puzzle game for iPhone and Android',
-    description: 'One board a day. Find four matching marks at the corners of a rectangle, and tilted rectangles count too. Puzzles ramp from a Monday coffee break to a Saturday gauntlet.',
+    description: 'One new board a day. Every grid hides rectangles with four matching marks at the corners, and the goal is to find them all.',
     highlights: [
-      'Ten years of puzzles generated ahead of time, each one re-solved by an independent validator using a different algorithm',
-      'CI guards the puzzle generator, the game engine and the tap-target layout budget',
-      'Built with React Native and Expo, backed by Cloudflare Workers, infrastructure in Pulumi'
+      'The twist: rectangles don’t have to line up with the grid. Tilted ones hide in plain sight and are much harder to spot.',
+      'A week with a shape. Monday is a small warm-up, boards grow all week, and Saturday is the mean one where most answers sit on an angle.',
+      'Designed to be calm. No ads, no account and it works offline. Swap the colors or play with card suits or chess pieces instead of dots, and share your solve without spoiling it.'
+    ],
+    screenshots: [
+      { src: corneredMonday, alt: 'Cornered Monday board with a tilted rectangle found' },
+      { src: corneredSunday, alt: 'Cornered Sunday board played with card suits' }
     ],
     technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
     link: 'https://apps.apple.com/app/id6804104582',
@@ -73,44 +81,52 @@ const projects: Project[] = [
 
 const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => (
   <article className="featured-project" aria-labelledby="featured-project-title">
-    <div className="featured-project-heading">
-      {project.logo && <img className="featured-project-logo" src={project.logo} alt={`${project.title} logo`} />}
-      <div>
-        <h3 id="featured-project-title">{project.title}</h3>
-        {project.tagline && <p className="featured-project-tagline">{project.tagline}</p>}
-      </div>
-      <span className="featured-project-status">
-        <span className="status-dot" aria-hidden="true"></span>
-        {project.status}
-      </span>
-    </div>
-    <p className="featured-project-description">{project.description}</p>
-    {project.highlights && (
-      <ul className="featured-project-highlights">
-        {project.highlights.map((highlight) => (
-          <li key={highlight}>{highlight}</li>
-        ))}
-      </ul>
-    )}
-    <div className="project-technologies">
-      {project.technologies.map((tech) => (
-        <span key={tech} className="tech-tag">
-          {tech}
+    <div className="featured-project-body">
+      <div className="featured-project-heading">
+        {project.logo && <img className="featured-project-logo" src={project.logo} alt={`${project.title} logo`} />}
+        <div>
+          <h3 id="featured-project-title">{project.title}</h3>
+          {project.tagline && <p className="featured-project-tagline">{project.tagline}</p>}
+        </div>
+        <span className="featured-project-status">
+          <span className="status-dot" aria-hidden="true"></span>
+          {project.status}
         </span>
-      ))}
-    </div>
-    <div className="store-links">
-      <a className="store-badge" href={project.link} target="_blank" rel="noopener noreferrer">
-        <span className="store-badge-small">Download on the</span>
-        <span className="store-badge-large">{project.linkLabel}</span>
-      </a>
-      {project.secondaryLink && (
-        <a className="store-badge" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
-          <span className="store-badge-small">Get it on</span>
-          <span className="store-badge-large">{project.secondaryLinkLabel}</span>
-        </a>
+      </div>
+      <p className="featured-project-description">{project.description}</p>
+      {project.highlights && (
+        <ul className="featured-project-highlights">
+          {project.highlights.map((highlight) => (
+            <li key={highlight}>{highlight}</li>
+          ))}
+        </ul>
       )}
+      <div className="project-technologies">
+        {project.technologies.map((tech) => (
+          <span key={tech} className="tech-tag">
+            {tech}
+          </span>
+        ))}
+      </div>
+      <div className="store-links">
+        <a className="store-badge-image" href={project.link} target="_blank" rel="noopener noreferrer">
+          <img src={appStoreBadge} alt={`Download on the ${project.linkLabel}`} height={48} />
+        </a>
+        {project.secondaryLink && (
+          <a className="store-badge" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
+            <span className="store-badge-small">Get it on</span>
+            <span className="store-badge-large">{project.secondaryLinkLabel}</span>
+          </a>
+        )}
+      </div>
     </div>
+    {project.screenshots && (
+      <div className="featured-project-screens">
+        {project.screenshots.map((shot) => (
+          <img key={shot.src} className="featured-project-screen" src={shot.src} alt={shot.alt} loading="lazy" />
+        ))}
+      </div>
+    )}
   </article>
 );
 

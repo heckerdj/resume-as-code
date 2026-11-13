@@ -17,8 +17,36 @@
   box-shadow: var(--shadow-lg);
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.featured-project-body {
+  flex: 999 1 380px;
+  min-width: 0;
+  display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+}
+
+.featured-project-screens {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.featured-project-screen {
+  width: 48%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+}
+
+.featured-project-screen + .featured-project-screen {
+  margin-top: var(--spacing-xl);
 }
 
 .featured-project-heading {
@@ -91,13 +119,30 @@
   gap: var(--spacing-sm);
 }
 
-/* Placeholder styling until the official App Store / Google Play badge artwork is added. */
+.store-badge-image {
+  display: inline-flex;
+  transition: transform var(--transition-fast);
+}
+
+.store-badge-image img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.store-badge-image:hover,
+.store-badge-image:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Google Play: stand-in until the official badge artwork is added. */
 .store-badge {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 52px;
-  padding: 0.35rem 1.25rem;
+  min-height: 48px;
+  padding: 0.25rem 1.1rem;
+  box-sizing: border-box;
   border-radius: 12px;
   background: #000;
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -247,9 +292,8 @@
     margin-left: 0;
   }
 
-  .store-links {
-    flex-direction: column;
-    align-items: stretch;
+  .featured-project-screen + .featured-project-screen {
+    margin-top: var(--spacing-md);
   }
 
   .projects-grid {
