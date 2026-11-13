@@ -1,8 +1,7 @@
 import React from 'react';
 import './Projects.css';
 import corneredIcon from '../assets/cornered-icon.svg';
-import corneredMonday from '../assets/cornered-monday.webp';
-import corneredSunday from '../assets/cornered-sunday.webp';
+import corneredSolved from '../assets/cornered-solved.webp';
 import appStoreBadge from '../assets/app-store-badge.png';
 import googlePlayBadge from '../assets/google-play-badge.png';
 
@@ -34,8 +33,7 @@ const projects: Project[] = [
       'Designed to be calm. No ads, no account and it works offline. Swap the colors or play with card suits or chess pieces instead of dots, and share your solve without spoiling it.'
     ],
     screenshots: [
-      { src: corneredMonday, alt: 'Cornered Monday board with a tilted rectangle found' },
-      { src: corneredSunday, alt: 'Cornered Sunday board played with card suits' }
+      { src: corneredSolved, alt: 'Cornered results screen for a fully solved Monday board' }
     ],
     technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
     link: 'https://apps.apple.com/app/id6804104582',

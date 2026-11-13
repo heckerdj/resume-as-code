@@ -38,15 +38,11 @@
 }
 
 .featured-project-screen {
-  width: 48%;
-  max-width: 200px;
+  width: 100%;
+  max-width: 240px;
   height: auto;
   border-radius: 18px;
   box-shadow: var(--shadow-lg);
-}
-
-.featured-project-screen + .featured-project-screen {
-  margin-top: var(--spacing-xl);
 }
 
 .featured-project-heading {
@@ -258,10 +254,6 @@
 
   .featured-project-status {
     margin-left: 0;
-  }
-
-  .featured-project-screen + .featured-project-screen {
-    margin-top: var(--spacing-md);
   }
 
   .projects-grid {
