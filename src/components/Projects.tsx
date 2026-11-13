@@ -29,7 +29,7 @@ const projects: Project[] = [
     description: 'One new board a day. Every grid hides rectangles with four matching marks at the corners, and the goal is to find them all.',
     highlights: [
       'The twist: rectangles don’t have to line up with the grid. Tilted ones hide in plain sight and are much harder to spot.',
-      'A week with a shape. Monday is a small warm-up, boards grow all week, and Saturday is the mean one where most answers sit on an angle.',
+      'Play it on the day. Solve a board the day it comes out without a hint and it goes gold, a hint makes it silver, and late solves still count. Streaks, solve times and a wall of awards, a few hidden until you earn them.',
       'Designed to be calm. No ads, no account and it works offline. Swap the colors or play with card suits or chess pieces instead of dots, and share your solve without spoiling it.'
     ],
     screenshots: [
