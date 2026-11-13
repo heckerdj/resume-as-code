@@ -33,7 +33,7 @@ const projects: Project[] = [
       'Designed to be calm. No ads, no account and it works offline. Swap the colors or play with card suits or chess pieces instead of dots, and share your solve without spoiling it.'
     ],
     screenshots: [
-      { src: corneredSolved, alt: 'Cornered results screen for a fully solved Monday board' }
+      { src: corneredSolved, alt: 'Cornered Monday board with three found rectangles circled, one of them tilted' }
     ],
     technologies: ['React Native', 'Expo', 'JavaScript', 'Cloudflare Workers', 'Pulumi'],
     link: 'https://apps.apple.com/app/id6804104582',
