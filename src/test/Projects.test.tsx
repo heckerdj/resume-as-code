@@ -35,23 +35,28 @@ describe('Projects', () => {
     expect(liveLink).toHaveAttribute('href', 'https://recipes.4craftybrothers.com/')
   })
 
-  it('renders Cornered project with App Store and Google Play links', () => {
+  it('renders Cornered as the featured project with App Store and Google Play links', () => {
     render(<Projects />)
-    expect(screen.getByRole('heading', { name: 'Cornered - Daily Puzzle Game' })).toBeInTheDocument()
-    expect(screen.getByText(/A daily puzzle mobile game/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Cornered' })).toBeInTheDocument()
+    expect(screen.getByText('A daily puzzle game for iPhone and Android')).toBeInTheDocument()
+    expect(screen.getByText(/One new board a day/)).toBeInTheDocument()
+    expect(screen.getByAltText('Cornered Monday board with two found rectangles circled, one of them tilted')).toBeInTheDocument()
+    expect(screen.getByText('Live on iOS and Android')).toBeInTheDocument()
 
-    expect(screen.getByText('App Store')).toHaveAttribute('href', 'https://apps.apple.com/app/id6804104582')
-    expect(screen.getByText('Google Play')).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /App Store/ })).toHaveAttribute('href', 'https://apps.apple.com/app/id6804104582')
+    expect(screen.getByRole('link', { name: /Google Play/ })).toHaveAttribute(
       'href',
       'https://play.google.com/store/apps/details?id=com.corneredgame.cornered'
     )
   })
 
-  it('renders Cornered first with its logo', () => {
-    render(<Projects />)
+  it('renders Cornered first, in its own featured card, with its logo', () => {
+    const { container } = render(<Projects />)
     const headings = screen.getAllByRole('heading', { level: 3 })
-    expect(headings[0]).toHaveTextContent('Cornered - Daily Puzzle Game')
+    expect(headings[0]).toHaveTextContent('Cornered')
     expect(screen.getByAltText('Cornered logo')).toBeInTheDocument()
+    expect(container.querySelectorAll('.featured-project')).toHaveLength(1)
+    expect(container.querySelector('.projects-grid')).not.toHaveTextContent('Cornered')
   })
 
   it('renders 3D Printing project', () => {
@@ -76,8 +81,8 @@ describe('Projects', () => {
     const printablesLink = screen.getByText('Printables')
     const detailsLink = screen.getByText('More Details')
     const liveLink = screen.getByText('Live app (access restricted)')
-    const appStoreLink = screen.getByText('App Store')
-    const googlePlayLink = screen.getByText('Google Play')
+    const appStoreLink = screen.getByRole('link', { name: /App Store/ })
+    const googlePlayLink = screen.getByRole('link', { name: /Google Play/ })
 
     // Check that "View Project" appears for projects without secondaryLink
     expect(viewLinks).toHaveLength(2)
