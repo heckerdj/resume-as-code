@@ -40,7 +40,7 @@ describe('Projects', () => {
     expect(screen.getByRole('heading', { name: 'Cornered' })).toBeInTheDocument()
     expect(screen.getByText('A daily puzzle game for iPhone and Android')).toBeInTheDocument()
     expect(screen.getByText(/One new board a day/)).toBeInTheDocument()
-    expect(screen.getByAltText('Cornered Monday board with three found rectangles circled, one of them tilted')).toBeInTheDocument()
+    expect(screen.getByAltText('Cornered Monday board with two found rectangles circled, one of them tilted')).toBeInTheDocument()
     expect(screen.getByText('Live on iOS and Android')).toBeInTheDocument()
 
     expect(screen.getByRole('link', { name: /App Store/ })).toHaveAttribute('href', 'https://apps.apple.com/app/id6804104582')
